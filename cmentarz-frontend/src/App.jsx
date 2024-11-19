@@ -5,21 +5,11 @@ import HomePage from './components/HomePage';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
+import 'leaflet-css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    const apiUrl = process.env.REACT_APP_API_URL;
-
-    console.log(apiUrl);
-    fetch(apiUrl)  
-      .then(response => response.json()) 
-      .then(data => setData(data))       
-      .catch(error => console.error('Błąd pobierania danych:', error));
-  }, []);
   return (
     <Router>
       <nav className='navbar'>

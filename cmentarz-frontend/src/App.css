@@ -1,9 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
+
 :root{
     --primary-color: #c0982a;
     --bg-color-light: #e7e7e7;
 }
 
 *{
+    font-family: "Jost";
     padding: 0px;
     margin: 0px;
 }
@@ -53,5 +56,10 @@ body{
 main{
     padding: 20px;
     text-align: center;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
 }
 

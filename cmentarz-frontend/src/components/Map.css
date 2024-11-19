@@ -1,0 +1,25 @@
+.map-container{
+    display: flex;
+
+    height: 500px;
+    width: 900px;
+}
+
+#map, .grave-information-panel{
+    height: 100%;
+}
+
+#map{
+    flex: 5;
+}
+
+.grave-information-panel{
+    padding: 8px;
+    color: rgb(70, 70, 70);
+    background-color: white;
+    flex: 2;
+}
+
+.grave-selected{
+    display: none;
+}
