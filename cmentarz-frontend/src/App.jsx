@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
-import HomePage from './components/HomePage';
+import HomePage from './components/HomePage/HomePage';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 

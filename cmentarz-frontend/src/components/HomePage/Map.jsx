@@ -2,8 +2,8 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import './Map.css';
 
 import L from 'leaflet';
-import GraveInfoEmpty from './GraveInfoEmpty';
-import GraveInfo from './GraveInfo';
+import GraveInfoEmpty from './GraveInformationPanel/GraveInfoEmpty';
+import GraveInfo from './GraveInformationPanel/GraveInfo';
 
 import crossImage from './cross.png';
 import selectedCrossImage from './cross-selected.png';
@@ -86,7 +86,7 @@ function Map(props){
                     )
                 })}
             </MapContainer>
-            {props.selectedGraveID == -1 ? <GraveInfoEmpty/> : <GraveInfo data={props.graves[props.selectedGraveID]}/>}
+            {props.selectedGraveID == -1 ? <GraveInfoEmpty/> : <GraveInfo graveId={props.selectedGraveID}/>}
         </div>
     )
 }
