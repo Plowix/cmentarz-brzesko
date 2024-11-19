@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 
 import PersonInfo from "./PersonInfo";
-function GraveInfo(props){
+function GraveInfo({selectedGraveId}){
     const [graveData, setGraveData] = useState({});
 
     const apiUrl = process.env.REACT_APP_API_URL
     
     useEffect(() => {
-        fetch(apiUrl+"/?grave_id="+props.graveId)
+        fetch(apiUrl+"/?grave_id="+selectedGraveId)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Błąd podczas pobierania danych");
@@ -16,7 +16,7 @@ function GraveInfo(props){
             })
             .then((data) => setGraveData(data))
             .catch((error) => console.error("Błąd:", error));
-    }, []);
+    }, [selectedGraveId]);
 
     return(
         <div className="grave-information-panel">

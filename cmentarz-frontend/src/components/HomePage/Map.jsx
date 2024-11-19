@@ -86,7 +86,7 @@ function Map(props){
                     )
                 })}
             </MapContainer>
-            {props.selectedGraveID == -1 ? <GraveInfoEmpty/> : <GraveInfo graveId={props.selectedGraveID}/>}
+            {props.selectedGraveID == -1 ? <GraveInfoEmpty/> : <GraveInfo selectedGraveId={props.selectedGraveID}/>}
         </div>
     )
 }
