@@ -7,7 +7,7 @@ function GraveInfo({selectedGraveId}){
     const apiUrl = process.env.REACT_APP_API_URL
     
     useEffect(() => {
-        fetch(apiUrl+"/?grave_id="+selectedGraveId)
+        fetch(apiUrl+'/?grave_id='+encodeURIComponent(selectedGraveId))
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Błąd podczas pobierania danych");

@@ -1,26 +1,39 @@
 import L from 'leaflet';
-import { Marker } from 'react-leaflet'
-import crossImage from './cross.png';
-import selectedCrossImage from './cross-selected.png';
+import { Marker } from 'react-leaflet';
+import { useState, useEffect } from 'react';
 
-const iconSize = [24, 32];
+function numberedDivIcon(grave, isSelected, fontSize){
+    const text = getGraveNumber(grave);
+    const textWidth = text.length * fontSize * 0.6; 
+    const iconSize = [fontSize, textWidth];
+    const iconAnchor = [iconSize[0]/2, iconSize[1]/2];
 
-//zwraca ikonę o src image przeskalowaną do zoomu
-function createDynamicIcon(sizeMult, image){
-    let newSize = [iconSize[0] * sizeMult, iconSize[1] * sizeMult];
-    return new L.Icon({
-        iconUrl: image,
-        iconSize: newSize,
-        iconAnchor: [newSize[0]/2, newSize[1]/2]
-    })
+    return L.divIcon(
+        {
+            className: isSelected ? 'grave-marker-icon selected-icon' : 'grave-marker-icon',
+            html: `<span style="font-size: ${fontSize}px;">${text}</span>`,
+        }
+    )
 }
 
-function GraveMarker({graveData, isSelected, handleSelectGrave, sizeMult}){
+function getGraveNumber(grave){
+    return Number(grave.id.split('/')[1]);
+}
+
+const baseMarkerFontSize = 15;
+
+function GraveMarker({graveData, isSelected, handleSelectGrave, sizeMult}){        
+    const [markerIcon, setMarkerIcon] = useState(numberedDivIcon(graveData, isSelected, baseMarkerFontSize*sizeMult));
+    useEffect(() => {
+        const icon = numberedDivIcon(graveData, isSelected, baseMarkerFontSize*sizeMult);
+        setMarkerIcon(icon);
+    }, [sizeMult, isSelected]);
+    
     return(
         <Marker 
             key={graveData.id} 
             position={graveData.position}
-            icon={isSelected ? createDynamicIcon(sizeMult, selectedCrossImage) : createDynamicIcon(sizeMult, crossImage)}
+            icon={markerIcon}
             eventHandlers={
             {click: () =>{
                 handleSelectGrave(graveData.id)

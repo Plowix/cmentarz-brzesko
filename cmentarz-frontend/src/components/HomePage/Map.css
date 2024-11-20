@@ -1,7 +1,17 @@
-.map-search-bar{
+:root{
+    --primary-color: #c0982a;
+    --bg-color-light: #e7e7e7;
+}
+
+.search-bar-container{
+    position: relative;
     width: 100%;
-    
-    margin: 5px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.map-search-bar{
+    width: 100%;    
     padding: 10px;
 
     border-radius: 15px;
@@ -11,6 +21,29 @@
 
     transition: 0.25s ease-in;
 }
+
+.search-result-container{
+    z-index: 9999;
+    width: 100%;
+    position: absolute;
+    box-shadow: 0px 0px 4px gray;
+}
+
+.search-result{
+    background-color: white;
+
+    transition: 0.25s ease-in;
+}
+
+.search-result:hover{
+    cursor: pointer;
+    background-color: var(--bg-color-light);
+}
+
+.search-result .search-result-name{
+    margin: 0px;
+}
+
 
 .map-search-bar:focus{
     border: 1px solid gray;
@@ -45,9 +78,27 @@
     flex: 2;
 }
 
-.grave-selected{
-    display: none;
+.grave-marker-icon{
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    font-weight: bold;
+    text-shadow: 
+        1px 1px 0px black,   
+        -1px -1px 0px black,
+        1px -1px 0px black,
+        -1px 1px 0px black,
+        0px 1px 5px black,  
+        1px 0px 5px black;
 }
+
+.selected-icon{
+    color: red;
+    font-weight: bold;
+}
+
 
 @media only screen and (max-width: 600px) {
     .map-container{

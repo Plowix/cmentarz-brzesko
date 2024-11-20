@@ -8,39 +8,28 @@ import GraveMarker from './GraveMarker';
 import { useState, useEffect } from 'react';
 import { L, map } from 'leaflet';
 
-function getMult(zoom){
-    /*
-     zwraca skalę w jakiej powinny być przedstawione groby 
-     w zależności od zoomu mapy 
-    */
-    let baseMult = 1;
-    let baseZoom = 20;
-    if(zoom < baseZoom){
-        while(baseZoom > zoom){
-            baseMult/=1.5;
-            zoom++;
-        }
+//zwraca skalę zależną od zoomu mapy
+function getMult(zoom) {
+    const baseZoom = 20;
+    
+    let zoomDifference = zoom - baseZoom;
+    
+    if (zoomDifference < 0) {
+        return Math.pow(2, zoomDifference); 
+    } else {
+        return Math.pow(2, zoomDifference); 
     }
-    else{
-        while(baseZoom < zoom){
-            baseMult*=1.5;
-            zoom--;
-        }
-    }
-
-    return baseMult;
 }
     
-
-function Map({graves, selectedGraveID, handleSelectGrave}){
+function Map({graves, selectedGraveID, handleSelectGrave, zoomFlag, setZoomFlag}){
     const [sizeMult, setSizeMult] = useState(1);
-
 
     //zoomuje do nowo wybranego grobu
     function GraveSelectionHandler(){
         const map = useMap();
         useEffect(() => {
-            if(selectedGraveID == -1) return;
+            if(zoomFlag==false) return;
+            if(selectedGraveID == "0") return;
             let graveCoordinates = [];
             for(let i = 0; i < graves.length; i++){
                 if(graves[i].id === selectedGraveID){
@@ -48,8 +37,16 @@ function Map({graves, selectedGraveID, handleSelectGrave}){
                     break;
                 }
             }
+            const handleZoom = () => {
+                const zoom = 21;
+                const newMult = getMult(zoom);
+                setSizeMult(newMult);
+            };
+            handleZoom();
 
-            map.flyTo(graveCoordinates);
+            map.flyTo(graveCoordinates, 21);
+            
+            setZoomFlag(false);
         }, [selectedGraveID]);
 
         return null;
@@ -58,18 +55,21 @@ function Map({graves, selectedGraveID, handleSelectGrave}){
 
     //zmienia skalę wyświetlanych ikon w zależności od zoomu
     function ZoomChangeHandler() {
-        const map = useMap(); 
-    
+        const map = useMap();     
         useEffect(() => {
-          const handleZoom = () => {
-            const zoom = map.getZoom();
-            const newMult = getMult(zoom);
-            setSizeMult(newMult);
-          };
+            const handleZoom = () => {
+                const zoom = map.getZoom();
+                const newMult = getMult(zoom);
+                setSizeMult(newMult);
+            };
+
+          let center = map.getCenter();
     
-          map.on("zoomend", handleZoom); 
+          map.on("zoom", handleZoom); 
           handleZoom();
-          return () => map.off("zoomend", handleZoom);
+          return () => {
+            map.off("zoom", handleZoom);
+          }
         }, [map]);
     
         return null;
@@ -77,7 +77,14 @@ function Map({graves, selectedGraveID, handleSelectGrave}){
 
     return(
         <div className="map-container">
-            <MapContainer id="map" center={[49.969450, 20.604549] } zoomSnap={0.25} maxZoom={24} zoom={window.innerWidth>=600 ? 19 : 18.5}>
+            <MapContainer 
+                id="map" 
+                wheelPxPerZoomLevel={200}
+                center={[49.969450, 20.604549] } 
+                zoomSnap={0.25} 
+                maxZoom={24} 
+                zoom={window.innerWidth>=600 ? 19 : 18.5}
+                >
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     attribution="&copy; <a href='http://osm.org/copyright'>OpenStreetMap</a> contributors"
@@ -97,7 +104,7 @@ function Map({graves, selectedGraveID, handleSelectGrave}){
                     )
                 })}
             </MapContainer>
-            {selectedGraveID === -1 ? <GraveInfoEmpty/> : <GraveInfo selectedGraveId={selectedGraveID}/>}
+            {selectedGraveID === "0" ? <GraveInfoEmpty/> : <GraveInfo selectedGraveId={selectedGraveID}/>}
         </div>
     )
 }

@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 
-import MapSearchBar from "./MapSearchBar";
+import MapSearchBar from "./SearchBar/MapSearchBar";
 import Map from "./Map";
 
 function HomePage(){
     const [graves, setGraves] = useState([]);
-    const [selectedGraveID, setSelectedGraveID] = useState(-1);
+    const [selectedGraveID, setSelectedGraveID] = useState("0");
+    const [zoomFlag, setZoomFlag] = useState(false); //jeżeli true to mapa zoomuje do wybranego grobu
 
     const apiUrl = process.env.REACT_APP_API_URL
     
@@ -23,15 +24,18 @@ function HomePage(){
 
     function handleSelectGrave(newSelectedID){
         setSelectedGraveID(newSelectedID);
+        setZoomFlag(true);
     }
 
     return(
         <main>
-            <MapSearchBar/>
+            <MapSearchBar handleSelectGrave={handleSelectGrave} />
             <Map 
                 graves={graves} 
                 selectedGraveID={selectedGraveID} 
                 handleSelectGrave={handleSelectGrave}
+                zoomFlag={zoomFlag}
+                setZoomFlag={setZoomFlag}
             />
         </main>
     )
