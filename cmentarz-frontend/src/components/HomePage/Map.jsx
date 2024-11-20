@@ -1,26 +1,18 @@
-import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, useMap } from 'react-leaflet';
 import './Map.css';
 
-import L from 'leaflet';
 import GraveInfoEmpty from './GraveInformationPanel/GraveInfoEmpty';
 import GraveInfo from './GraveInformationPanel/GraveInfo';
+import GraveMarker from './GraveMarker';
 
-import crossImage from './cross.png';
-import selectedCrossImage from './cross-selected.png';
 import { useState, useEffect } from 'react';
-
-const iconSize = [24, 32];
-
-function createDynamicIcon(sizeMult, image){
-    let newSize = [iconSize[0] * sizeMult, iconSize[1] * sizeMult];
-    return new L.Icon({
-        iconUrl: image,
-        iconSize: newSize,
-        iconAnchor: [newSize[0]/2, newSize[1]/2]
-    })
-}
+import { L, map } from 'leaflet';
 
 function getMult(zoom){
+    /*
+     zwraca skalę w jakiej powinny być przedstawione groby 
+     w zależności od zoomu mapy 
+    */
     let baseMult = 1;
     let baseZoom = 20;
     if(zoom < baseZoom){
@@ -40,10 +32,32 @@ function getMult(zoom){
 }
     
 
-function Map(props){
+function Map({graves, selectedGraveID, handleSelectGrave}){
     const [sizeMult, setSizeMult] = useState(1);
 
-    function ZoomHandler() {
+
+    //zoomuje do nowo wybranego grobu
+    function GraveSelectionHandler(){
+        const map = useMap();
+        useEffect(() => {
+            if(selectedGraveID == -1) return;
+            let graveCoordinates = [];
+            for(let i = 0; i < graves.length; i++){
+                if(graves[i].id === selectedGraveID){
+                    graveCoordinates = [graves[i].position[0], graves[i].position[1]];
+                    break;
+                }
+            }
+
+            map.flyTo(graveCoordinates);
+        }, [selectedGraveID]);
+
+        return null;
+    }
+
+
+    //zmienia skalę wyświetlanych ikon w zależności od zoomu
+    function ZoomChangeHandler() {
         const map = useMap(); 
     
         useEffect(() => {
@@ -63,30 +77,27 @@ function Map(props){
 
     return(
         <div className="map-container">
-            <MapContainer id="map" center={[49.969450, 20.604549]} maxZoom={24} zoom={19}>
+            <MapContainer id="map" center={[49.969450, 20.604549] } zoomSnap={0.25} maxZoom={24} zoom={window.innerWidth>=600 ? 19 : 18.5}>
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     attribution="&copy; <a href='http://osm.org/copyright'>OpenStreetMap</a> contributors"
                     maxNativeZoom={20}
                     maxZoom={24}
                 />
-                <ZoomHandler/>
-                {props.graves.map(function(grave){
+                <GraveSelectionHandler/>
+                <ZoomChangeHandler/>
+                {graves.map(function(grave){
                     return(
-                        <Marker 
-                            key={grave.id} 
-                            position={grave.position}
-                            icon={grave.id == props.selectedGraveID ? createDynamicIcon(sizeMult, selectedCrossImage) : createDynamicIcon(sizeMult, crossImage)}
-                            eventHandlers={
-                            {click: () =>{
-                                props.setSelectedGraveID(grave.id)
-                            }
-                            }}>
-                        </Marker>
+                        <GraveMarker
+                            graveData={grave}
+                            isSelected={grave.id === selectedGraveID}
+                            handleSelectGrave={handleSelectGrave}
+                            sizeMult={sizeMult}
+                        />
                     )
                 })}
             </MapContainer>
-            {props.selectedGraveID == -1 ? <GraveInfoEmpty/> : <GraveInfo selectedGraveId={props.selectedGraveID}/>}
+            {selectedGraveID === -1 ? <GraveInfoEmpty/> : <GraveInfo selectedGraveId={selectedGraveID}/>}
         </div>
     )
 }

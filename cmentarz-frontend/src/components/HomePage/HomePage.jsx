@@ -21,13 +21,17 @@ function HomePage(){
             .catch((error) => console.error("Błąd:", error));
     }, []);
 
+    function handleSelectGrave(newSelectedID){
+        setSelectedGraveID(newSelectedID);
+    }
+
     return(
         <main>
             <MapSearchBar/>
             <Map 
                 graves={graves} 
                 selectedGraveID={selectedGraveID} 
-                setSelectedGraveID={setSelectedGraveID}
+                handleSelectGrave={handleSelectGrave}
             />
         </main>
     )
