@@ -39,7 +39,7 @@ header{
 }
 
 button.theme-toggle svg{
-    font-size: calc(var(--font-size-medium)+30px);
+    font-size: var(--font-size-medium);
 }
 
 @media only screen and (max-width: 600px) {
