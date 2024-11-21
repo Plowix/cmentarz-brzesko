@@ -30,14 +30,22 @@
 }
 
 .search-result{
+    padding: 5px;
     background-color: white;
 
     transition: 0.25s ease-in;
 }
 
+.search-result h5{
+    margin: 0px;
+}
+
+.search-result:hover, .selected-result{
+    background-color: var(--bg-color-light);
+}
+
 .search-result:hover{
     cursor: pointer;
-    background-color: var(--bg-color-light);
 }
 
 .search-result .search-result-name{

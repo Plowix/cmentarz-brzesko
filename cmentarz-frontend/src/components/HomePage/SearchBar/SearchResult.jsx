@@ -1,9 +1,9 @@
 import { formatDate } from "../../../utils/DateUtils";
 
-function searchResult({personData, handleResultClick}){
+function searchResult({isSelected, personData, handleResultClick}){
     return(
         <div 
-            className="search-result"
+            className={isSelected ? "search-result selected-result" : "search-result"}
             onMouseDown={(e)=>{
                 e.preventDefault();
                 handleResultClick(personData.grave_id)

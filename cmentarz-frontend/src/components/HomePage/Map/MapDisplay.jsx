@@ -35,6 +35,7 @@ function MapDisplay({graves, selectedGraveID, zoomFlag, setZoomFlag, handleSelec
                 {graves.map(function(grave){
                     return(
                         <GraveMarker
+                            key={grave.id}
                             graveData={grave}
                             isSelected={grave.id === selectedGraveID}
                             handleSelectGrave={handleSelectGrave}

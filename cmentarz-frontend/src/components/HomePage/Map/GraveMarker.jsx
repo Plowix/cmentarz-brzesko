@@ -31,7 +31,6 @@ function GraveMarker({graveData, isSelected, handleSelectGrave, sizeMult}){
     
     return(
         <Marker 
-            key={graveData.id} 
             position={graveData.position}
             icon={markerIcon}
             eventHandlers={
