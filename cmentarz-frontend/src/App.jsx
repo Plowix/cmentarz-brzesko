@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 import Header from './components/Header/Header'
@@ -11,6 +11,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {
+  useEffect(() => {
+    document.title = 'Cmentarz w Brzesku';
+  }, []);
+  
+
   return (
     <Router>
       <header>
