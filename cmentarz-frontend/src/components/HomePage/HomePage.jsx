@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 
 import MapSearchBar from "./SearchBar/MapSearchBar";
-import Map from "./Map";
+import MapContainer from "./Map/MapContainer";
+
+import './HomePage.css';
 
 function HomePage(){
     const [graves, setGraves] = useState([]);
@@ -20,7 +22,7 @@ function HomePage(){
             })
             .then((data) => setGraves(data))
             .catch((error) => console.error("Błąd:", error));
-    }, []);
+    }, [apiUrl]);
 
     function handleSelectGrave(newSelectedID){
         setSelectedGraveID(newSelectedID);
@@ -30,7 +32,7 @@ function HomePage(){
     return(
         <main>
             <MapSearchBar handleSelectGrave={handleSelectGrave} />
-            <Map 
+            <MapContainer 
                 graves={graves} 
                 selectedGraveID={selectedGraveID} 
                 handleSelectGrave={handleSelectGrave}
