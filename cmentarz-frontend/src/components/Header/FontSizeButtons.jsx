@@ -8,9 +8,9 @@ const FontSizeButtons = () => {
   });
 
   const fontSizeLimits = {
-    big: { min: 20, max: 45 },
-    medium: { min: 12, max: 35 },
-    small: { min: 10, max: 27 }
+    big: { min: 24, max: 40 },
+    medium: { min: 15, max: 30 },
+    small: { min: 12, max: 24 }
   };
 
   const adjustFontSizes = (factor) => {
@@ -38,10 +38,10 @@ const FontSizeButtons = () => {
   }, [fontSize]);
 
   return (
-    <div>
+    <>
     <button className='font-size-button' onClick={() => adjustFontSizes(1.1)}>A+</button>
     <button className='font-size-button' onClick={() => adjustFontSizes(0.9)}>A--</button>
-    </div>
+    </>
   );
 };
 

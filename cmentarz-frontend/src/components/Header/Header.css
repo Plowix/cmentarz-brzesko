@@ -14,10 +14,39 @@ header{
     padding: 20px;
 }
 
+.top-bar h1{
+    font-size: 30px;
+}
+
 .accessibility-options{
     display: flex;
 }
 
 .accessibility-options button{
-    color: black;
+    margin: 5px;
+
+    background: none;
+    border: none;
+
+    color: white;
+    font-size: var(--font-size-medium);
+
+    transition: 0.1s ease-in;
 }
+
+.accessibility-options button:hover{
+    color: rgb(223, 223, 223);
+}
+
+button.theme-toggle svg{
+    font-size: calc(var(--font-size-medium)+30px);
+}
+
+@media only screen and (max-width: 600px) {
+    .top-bar{
+        padding: 10px;
+    }
+    .top-bar h1{
+        font-size: 15px;
+    }
+  }

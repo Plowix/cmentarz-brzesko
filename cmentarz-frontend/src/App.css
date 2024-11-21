@@ -59,7 +59,7 @@ main{
     flex-direction: column;
     align-items: center;
 
-    width: 800px;
+    width: 1000px;
     max-width: 100%;
 
     padding: 20px;
@@ -67,9 +67,35 @@ main{
 
 }
 
+.burger-menu{
+    background: none;
+    border: none;
+    color: white;
+}
+
+.burger-menu:hover{
+    color: rgb(196, 196, 196);
+}
+
+@media only screen and (min-width: 600px) {
+    .burger-menu{
+        display: none;
+    }
+  }
+
 @media only screen and (max-width: 600px) {
-    main {
-      padding: 5px;
+    .navbar{
+        display: none;
+        
+    }
+
+    .navbar a{
+        width: 100%;
+    }
+
+    .navbar.open{
+        display: flex;
+        flex-direction: column;
     }
   }
 
