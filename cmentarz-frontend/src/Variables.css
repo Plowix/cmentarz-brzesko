@@ -1,8 +1,22 @@
 :root{
-    --primary-color: #c0982a;
+    --primary-color: #a7862e;
+
+    --bg-color: var(--bg-color-dark);
+    --bg-secondary-color: var(--bg-secondary-color-dark);
+    --text-color: var(--text-color-dark);
+    --text-secondary-color: var(--text-secondary-color-dark);
+
+    --text-color-light: #000000;
+    --text-secondary-color-light: #272727;
     --bg-color-light: #e7e7e7;
+    --bg-secondary-color-light: #f1f1f1;
+
+    --text-color-dark: #ffffff;
+    --text-secondary-color-dark: #dbdbdb;
+    --bg-color-dark: rgb(34, 34, 34);
+    --bg-secondary-color-dark: rgb(61, 61, 61);
 
     --font-size-big: 32px;
     --font-size-medium: 20px;
-    --font-size-small: 14px;
+    --font-size-small: 16px;
 }

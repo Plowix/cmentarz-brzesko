@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
+import Header from './components/Header/Header'
 import HomePage from './components/HomePage/HomePage';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -12,15 +13,13 @@ import './App.css';
 function App() {
   return (
     <Router>
-      <nav className='navbar'>
-        <div className="top-bar">
-          <h1>Zabytkowy Cmentarz Parafialny <br />w Brzesku</h1>
-        </div>
-        <div className="links">
+      <header>
+        <Header/>
+        <div className="navbar">
           <Link to="/">Mapa</Link> {" "}
           <Link to="/kontakt">Kontakt</Link> {" "}
         </div>
-      </nav>
+      </header>
       <Routes>
         <Route path="/" element={<HomePage/>}/>
         <Route path="/kontakt" element={<Contact/>}/>

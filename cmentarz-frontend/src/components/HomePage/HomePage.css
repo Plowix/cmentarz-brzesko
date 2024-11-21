@@ -13,10 +13,12 @@
 
     border-radius: 15px;
     font-size: var(--font-size-medium);
+    background-color: var(--bg-secondary-color);
+    color: var(--text-secondary-color);
 
     border: 1px solid gray;
 
-    transition: 0.25s ease-in;
+    transition: 0.15s ease-in;
 }
 
 .search-result-container{
@@ -28,7 +30,8 @@
 
 .search-result{
     padding: 5px;
-    background-color: white;
+    background-color: var(--bg-secondary-color);
+    color: var(--text-secondary-color);
 
     transition: 0.25s ease-in;
 }
@@ -38,7 +41,7 @@
 }
 
 .search-result:hover, .selected-result{
-    background-color: var(--bg-color-light);
+    background-color: var(--bg-color);
 }
 
 .search-result:hover{
@@ -78,9 +81,16 @@
 
 .grave-information-panel{
     padding: 8px;
-    color: rgb(70, 70, 70);
-    background-color: white;
+    color: var(--text-secondary-color);
+    background-color: var(--bg-secondary-color);
     flex: 2;
+
+    overflow-y: scroll;
+}
+
+.grave-information-panel img{
+    width: 150px;
+    height: 150px;
 }
 
 .grave-marker-icon{

@@ -18,10 +18,10 @@ function MapDisplay({graves, selectedGraveID, zoomFlag, setZoomFlag, handleSelec
                 zoom={window.innerWidth>=600 ? 19 : 18.5}
                 >
                 <TileLayer
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    attribution="&copy; <a href='http://osm.org/copyright'>OpenStreetMap</a> contributors"
-                    maxNativeZoom={20}
-                    maxZoom={24}
+                    url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
+                    attribution='&copy; <a href="https://carto.com/attributions">CartoDB</a>'
+                    maxNativeZoom={19}
+                    maxZoom={22}
                 />
                 <GraveZoomHandler
                     graves={graves}

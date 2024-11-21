@@ -1,0 +1,23 @@
+header{
+    width: 100%;
+    background-color: var(--primary-color);
+}
+
+.top-bar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: white;
+
+    
+    padding: 20px;
+}
+
+.accessibility-options{
+    display: flex;
+}
+
+.accessibility-options button{
+    color: black;
+}
