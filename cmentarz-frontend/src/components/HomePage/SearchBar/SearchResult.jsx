@@ -1,3 +1,5 @@
+import { formatDate } from "../../../utils/DateUtils";
+
 function searchResult({personData, handleResultClick}){
     return(
         <div 
@@ -8,7 +10,7 @@ function searchResult({personData, handleResultClick}){
             }}
             >
             <h5 className="search-result-name">{personData.full_name}</h5>
-            <i>zm. {personData.death_date}</i>
+            <i><b>zm.</b> {formatDate(personData.death_date)}</i>
         </div>
     )
 }
