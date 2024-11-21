@@ -59,7 +59,7 @@ else if(isset($_GET["grave_id"])){
     $query = "SELECT full_name, 
                  birth_year, birth_month, birth_day, 
                  death_year, death_month, death_day 
-          FROM Persons 
+          FROM persons 
           WHERE grave_id = '".$conn->real_escape_string($_GET['grave_id'])."'";
 
     if ($result = $conn->query($query)) {
