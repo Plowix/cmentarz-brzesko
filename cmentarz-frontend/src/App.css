@@ -97,5 +97,9 @@ main{
         display: flex;
         flex-direction: column;
     }
+
+    main{
+        padding: 10px;
+    }
   }
 

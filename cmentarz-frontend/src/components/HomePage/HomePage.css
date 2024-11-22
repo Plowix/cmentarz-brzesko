@@ -1,68 +1,5 @@
 @import '../../Variables.css';
 
-.search-bar-container{
-    position: relative;
-    width: 100%;
-    padding: 0px;
-    margin: 0px;
-}
-
-.map-search-bar{
-    width: 100%;    
-    padding: 10px;
-
-    border-radius: 15px;
-    font-size: var(--font-size-medium);
-    background-color: var(--bg-secondary-color);
-    color: var(--text-secondary-color);
-
-    border: 1px solid gray;
-
-    transition: 0.15s ease-in;
-}
-
-.search-result-container{
-    z-index: 9999;
-    width: 100%;
-    position: absolute;
-    box-shadow: 0px 0px 4px gray;
-}
-
-.search-result{
-    display: flex;
-    justify-content: space-between;
-
-    padding: 5px;
-    background-color: var(--bg-secondary-color);
-    color: var(--text-secondary-color);
-
-    transition: 0.25s ease-in;
-}
-
-.search-result h5{
-    margin: 0px;
-}
-
-.search-result:hover, .selected-result{
-    background-color: var(--bg-color);
-}
-
-.search-result:hover{
-    cursor: pointer;
-}
-
-.search-result .search-result-name{
-    margin: 0px;
-}
-
-
-.map-search-bar:focus{
-    border: 1px solid gray;
-    border-radius: 10px 10px 5px 5px;
-    box-shadow: none;
-}
-
-
 .map-container{
     display: flex;
 
@@ -89,16 +26,17 @@
     font-size: calc(var(--font-size-medium)*1.2);
 }
 
-.grave-information-panel img{
-    width: 100%;
+.grave-information-panel img, .search-result img{
     aspect-ratio: 1/1;
-    object-fit: cover;
-    object-position: center;
-
     background-image: url('./GraveInformationPanel/placeholder.jpg');
     background-size: 100%;
-
+    object-fit: cover;
+    object-position: center;
     font-size: 0px;
+}
+
+.grave-information-panel img{
+    width: 100%;
 }
 
 .grave-people-header{
