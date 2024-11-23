@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCross } from '@fortawesome/free-solid-svg-icons';
 
 import Spinner from "./Spinner";
 import PersonInfo from "./PersonInfo";
+
+import './GraveInformationPanel.css';
+
 function GraveInfo({selectedGraveId}){
     const [graveData, setGraveData] = useState({});
     const [isLoading, setIsLoading] = useState(true)
