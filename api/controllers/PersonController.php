@@ -8,6 +8,9 @@ class PersonController {
         
         $sql = "SELECT 
                     persons.full_name, 
+                    persons.birth_year, 
+                    persons.birth_month, 
+                    persons.birth_day, 
                     persons.death_year, 
                     persons.death_month, 
                     persons.death_day, 
@@ -33,7 +36,7 @@ class PersonController {
             $params[] = $birthMonth;
         }
         if ($birthYear !== '') {
-            $sql .= " AND persons.birth_year = ?";
+            $sql .= " AND YEAR(persons.birth_year) = ?";
             $params[] = $birthYear;
         }
 
@@ -46,7 +49,7 @@ class PersonController {
             $params[] = $deathMonth;
         }
         if ($deathYear !== '') {
-            $sql .= " AND persons.death_year = ?";
+            $sql .= " AND YEAR(persons.death_year) = ?";
             $params[] = $deathYear;
         }
 
@@ -61,6 +64,7 @@ class PersonController {
             while ($row = $result->fetch_assoc()) {
                 $people[] = [
                     'full_name' => $row['full_name'],
+                    'birth_date' => getPersonDate($row, true),
                     'death_date' => getPersonDate($row, false),
                     'grave_id' => $row['grave_id'],
                     'photo_path' => $row['photo_path']

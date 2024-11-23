@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react';
+
+import AdvancedSearchForm from './AdvancedSearchForm';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp, faChevronDown, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
@@ -42,20 +45,20 @@ function SearchBarForm({ setSearchResults, setShowResults, setResultsLoading }) 
             newErrors.fullName = 'Imię i nazwisko jest wymagane';
         }
 
-        if (formData.birthMonth != '' && (isNaN(formData.birthMonth) || formData.birthMonth < 1 || formData.birthMonth > 12)) {
+        if (formData.birthMonth !== '' && (isNaN(formData.birthMonth) || formData.birthMonth < 1 || formData.birthMonth > 12)) {
             newErrors.birthMonth = 'Miesiąc musi być liczbą od 1 do 12';
         }
-        if (formData.birthDay != '' && (isNaN(formData.birthDay) || formData.birthDay < 1 || formData.birthDay > 31)) {
+        if (formData.birthDay !== '' && (isNaN(formData.birthDay) || formData.birthDay < 1 || formData.birthDay > 31)) {
             newErrors.birthDay = 'Dzień musi być liczbą od 1 do 31';
         }
         if(formData.birthYear !== '' && isNaN(formData.birthYear)){
             newErrors.birthYear = "Rok musi być liczbą";
         }
 
-        if (formData.deathMonth != '' && (isNaN(formData.deathMonth) || formData.deathMonth < 1 || formData.deathMonth > 12)) {
+        if (formData.deathMonth !== '' && (isNaN(formData.deathMonth) || formData.deathMonth < 1 || formData.deathMonth > 12)) {
             newErrors.deathMonth = 'Miesiąc musi być liczbą od 1 do 12';
         }
-        if (formData.deathDay != '' && (isNaN(formData.deathDay) || formData.deathDay < 1 || formData.deathDay > 31)) {
+        if (formData.deathDay !== '' && (isNaN(formData.deathDay) || formData.deathDay < 1 || formData.deathDay > 31)) {
             newErrors.deathDay = 'Dzień musi być liczbą od 1 do 31';
         }
         if(formData.deathYear !== '' && isNaN(formData.deathYear)){
@@ -134,7 +137,6 @@ function SearchBarForm({ setSearchResults, setShowResults, setResultsLoading }) 
     };
 
     useEffect(()=>{
-        console.log("USEEFFECT");
         validateForm();
     }, [formData]);
 
@@ -171,56 +173,13 @@ function SearchBarForm({ setSearchResults, setShowResults, setResultsLoading }) 
             </div>
 
             {isAdvancedSearch &&
-                <div className="advanced-search-inputs">
-                    <div className="birth-date-inputs">
-                        <h3>Data urodzenia</h3>
-                        <input
-                            type="number"
-                            placeholder='Dzień'
-                            value={formData.birthDay}
-                            onChange={(e) => handleInputChange(e, 'birthDay')}
-                            className={errors.birthDay ? 'wrong-input' : ''}
-                        />
-                        <input
-                            type="number"
-                            placeholder='Miesiąc'
-                            value={formData.birthMonth}
-                            onChange={(e) => handleInputChange(e, 'birthMonth')}
-                            className={errors.birthMonth ? 'wrong-input' : ''}
-                        />
-                        <input
-                            className={errors.birthYear ? 'wrong-input' : ''}
-                            type="number"
-                            placeholder='Rok'
-                            value={formData.birthYear}
-                            onChange={(e) => handleInputChange(e, 'birthYear')}
-                        />
-                    </div>
-                    <div className="death-date-inputs">
-                        <h3>Data śmierci</h3>
-                        <input
-                            type="number"
-                            placeholder='Dzień'
-                            value={formData.deathDay}
-                            onChange={(e) => handleInputChange(e, 'deathDay')}
-                            className={errors.deathDay ? 'wrong-input' : ''}
-                        />
-                        <input
-                            type="number"
-                            placeholder='Miesiąc'
-                            value={formData.deathMonth}
-                            onChange={(e) => handleInputChange(e, 'deathMonth')}
-                            className={errors.deathMonth ? 'wrong-input' : ''}
-                        />
-                        <input
-                            className={errors.deathYear ? 'wrong-input' : ''}
-                            type="number"
-                            placeholder='Rok'
-                            value={formData.deathYear}
-                            onChange={(e) => handleInputChange(e, 'deathYear')}
-                        />
-                    </div>
-                </div>
+                <AdvancedSearchForm
+                    formData={formData}
+                    errors={errors}
+                    handleInputChange={handleInputChange}
+                    handleKeyDown={handleKeyDown}
+                />
+                
             }
         </form>
     );

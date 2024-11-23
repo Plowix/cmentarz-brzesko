@@ -35,8 +35,15 @@
     font-size: 0px;
 }
 
+.grave-information-panel .info-container{
+    width: 95%;
+}
 .grave-information-panel img{
     width: 100%;
+}
+.grave-information-panel .top-container{
+    display: flex;
+    align-items: center;
 }
 
 .grave-people-header{

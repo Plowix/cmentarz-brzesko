@@ -28,7 +28,7 @@ function GraveInfo({selectedGraveId}){
         <div className="grave-information-panel">
             {isLoading ? <Spinner/> : <>
             <img src={process.env.REACT_APP_URL+graveData.photo_path} alt="Zdjęcie grobu"/>
-            <div>
+            <div className="info-container">
             <h2 className="grave-people-header"><FontAwesomeIcon icon={faCross}/> Pochowani:</h2>
             <div className="people-container">
                 {graveData['people'] ? 
