@@ -6,7 +6,7 @@ import MapDisplay from './MapDisplay';
 
 import { useState, useEffect } from 'react';
     
-function Map({graves, selectedGraveID, handleSelectGrave, zoomFlag, setZoomFlag}){
+function Map({graves, selectedGraveID, handleSelectGrave, zoomFlag, setZoomFlag, setModalImage}){
     return(
         <div className="map-container">
             <MapDisplay
@@ -17,7 +17,7 @@ function Map({graves, selectedGraveID, handleSelectGrave, zoomFlag, setZoomFlag}
                 handleSelectGrave={handleSelectGrave}
             />
 
-            {selectedGraveID === "0" ? <GraveInfoEmpty/> : <GraveInfo selectedGraveId={selectedGraveID}/>}
+            {selectedGraveID === "0" ? <GraveInfoEmpty/> : <GraveInfo setModalImage={setModalImage} selectedGraveId={selectedGraveID}/>}
         </div>
     )
 }

@@ -5,7 +5,7 @@ import MapContainer from "./Map/MapContainer";
 
 import './HomePage.css';
 
-function HomePage(){
+function HomePage({setModalImage}){
     const [graves, setGraves] = useState([]);
     const [selectedGraveID, setSelectedGraveID] = useState("0");
     const [zoomFlag, setZoomFlag] = useState(false); //jeżeli true to mapa zoomuje do wybranego grobu
@@ -38,6 +38,7 @@ function HomePage(){
                 handleSelectGrave={handleSelectGrave}
                 zoomFlag={zoomFlag}
                 setZoomFlag={setZoomFlag}
+                setModalImage={setModalImage}
             />
         </main>
     )

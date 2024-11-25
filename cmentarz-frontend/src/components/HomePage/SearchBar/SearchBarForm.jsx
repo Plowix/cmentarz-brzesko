@@ -31,6 +31,10 @@ function SearchBarForm({ setSearchResults, setShowResults, setResultsLoading }) 
     const apiUrl = process.env.REACT_APP_API_URL;
 
     const handleInputChange = (e, field) => {
+        if(field != 'fullName'){
+            console.log(e.target.value);
+        }
+
         const { value } = e.target;
         setFormData((prevData) => ({
             ...prevData,
@@ -71,11 +75,11 @@ function SearchBarForm({ setSearchResults, setShowResults, setResultsLoading }) 
     };
 
     const handleSearch = (e) => {
-        setShowResults(true);
-        setResultsLoading(true);
         e.preventDefault();
     
-        if (validateForm()) {
+        if (validateForm() && !isSearchDisabled) {
+            setShowResults(true);
+            setResultsLoading(true);
             let searchQuery = apiUrl + '/?search_query=' + encodeURIComponent(formData.fullName);
             
             if (isAdvancedSearch) {

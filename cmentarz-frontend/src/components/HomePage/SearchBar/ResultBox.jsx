@@ -1,4 +1,4 @@
-import Spinner from '../GraveInformationPanel/Spinner';
+import Spinner from "../../Decor/Spinner";
 import SearchResult from './SearchResult';
 
 function ResultBox({searchResults, handleResultClick, setShowResults, resultsLoading}){

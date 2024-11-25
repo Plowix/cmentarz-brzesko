@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
+import ModalDisplay from './components/Decor/ModalDisplay';
 import Header from './components/Header/Header'
 import HomePage from './components/HomePage/HomePage';
 import Contact from './components/Contact';
@@ -12,6 +13,12 @@ import './App.css';
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [modalImage, setModalImage] = useState('http://localhost:8000/images/graves/grave_1001.jpg');
+
+  const closeModal = () =>{
+    console.log("Zamykanie");
+    setModalImage('');
+  }
 
   useEffect(() => {
     document.title = 'Cmentarz w Brzesku';
@@ -24,6 +31,12 @@ function App() {
 
   return (
     <Router>
+      {modalImage !== '' && 
+        <ModalDisplay
+          modalImage={modalImage}
+          closeModal={closeModal}
+        />
+      }
       <header>
         <Header
           toggleMenu={toggleMenu}
@@ -34,7 +47,7 @@ function App() {
         </div>
       </header>
       <Routes>
-        <Route path="/" element={<HomePage/>}/>
+        <Route path="/" element={<HomePage setModalImage={setModalImage}/>}/>
         <Route path="/kontakt" element={<Contact/>}/>
       </Routes>
       <Footer/>
