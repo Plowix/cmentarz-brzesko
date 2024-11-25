@@ -16,12 +16,14 @@ header, main, footer, body{
 
 body{
     background-color: var(--bg-color);
+    min-height: 100vh;
 }
 
 #root{
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 100vh;
 }
 
 .navbar{
@@ -37,7 +39,11 @@ body{
 }
 
 
-.navbar a{
+.navbar button{
+    border: none;
+}
+
+.navbar a, .navbar button{
     padding: 15px;
     font-weight: bold;
     
@@ -49,7 +55,7 @@ body{
     transition: 0.2s ease-in;
 }
 
-.navbar a:hover{
+.navbar a:hover, .navbar button:hover{
     color: white;
     background-color: var(--primary-color);
 }
@@ -77,6 +83,10 @@ main{
     color: rgb(196, 196, 196);
 }
 
+footer{
+    margin-top: auto;
+}
+
 @media only screen and (min-width: 600px) {
     .burger-menu{
         display: none;
@@ -89,7 +99,7 @@ main{
         
     }
 
-    .navbar a{
+    .navbar a, .navbar button{
         width: 100%;
     }
 

@@ -16,6 +16,13 @@ header{
 
 .top-bar h1{
     font-size: 30px;
+
+    transition: 0.1s ease-in;
+}
+
+.top-bar h1:hover{
+    cursor: pointer;
+    color: rgb(228, 228, 228);
 }
 
 .accessibility-options{
