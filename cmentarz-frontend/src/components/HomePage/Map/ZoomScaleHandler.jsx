@@ -5,7 +5,7 @@ import { useMap } from 'react-leaflet';
 
 //zwraca skalę zależną od zoomu mapy
 function getMult(zoom) {
-  const baseZoom = 20;
+  const baseZoom = 21;
   
   let zoomDifference = zoom - baseZoom;
   

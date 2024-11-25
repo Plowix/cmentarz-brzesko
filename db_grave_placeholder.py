@@ -10,7 +10,7 @@ def padZeros(number, targetLength):
 def coordsToPoint(coords):
     return f'POINT({coords[0]} {coords[1]})'
 
-diff = 0.00003
+diff = 0.000015
 sectorNumber = str(sys.argv[1])
 coords = [float(sys.argv[3]), float(sys.argv[4])]  
 
@@ -36,4 +36,5 @@ for i in range(1, int(sys.argv[2]) + 1):
     coords[1] += diff 
 
 mydb.commit()
-print(mycursor.rowcount, "record(s) inserted")
+mycursor.close()
+mydb.close()

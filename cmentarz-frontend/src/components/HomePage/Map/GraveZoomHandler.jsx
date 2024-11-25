@@ -16,7 +16,7 @@ function GraveZoomHandler({graves, selectedGraveID, zoomFlag, setZoomFlag}){
             }
         }
 
-        map.flyTo(graveCoordinates, 21);
+        map.flyTo(graveCoordinates, 22);
         
         setZoomFlag(false);
     }, [selectedGraveID, zoomFlag]);

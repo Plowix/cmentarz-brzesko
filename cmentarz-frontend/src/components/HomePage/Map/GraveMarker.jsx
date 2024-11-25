@@ -20,7 +20,7 @@ function getGraveNumber(grave){
     return Number(grave.id.split('/')[1]);
 }
 
-const baseMarkerFontSize = 15;
+const baseMarkerFontSize = 10;
 
 function GraveMarker({graveData, isSelected, handleSelectGrave, sizeMult}){        
     const [markerIcon, setMarkerIcon] = useState(numberedDivIcon(graveData, isSelected, baseMarkerFontSize*sizeMult));
