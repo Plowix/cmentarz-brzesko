@@ -5,13 +5,29 @@
 
     color: var(--text-secondary-color);
     background-color: var(--bg-secondary-color);
-    flex: 2;
+    flex: 1;
     overflow-y: auto;
+    transition: 0.1s ease-in;
+}
+
+.grave-information-panel.empty{
+    justify-content: center;
+    padding: 20px;
+}
+
+.grave-information-panel.expanded{
+    flex: 2.5;
 }
 
 .empty-header{
     padding: 5px;
-    font-size: calc(var(--font-size-medium)*1.2);
+    font-size: calc(var(--font-size-medium)*1.2);    
+}
+
+.grave-information-panel .top-part{
+    width: 100%;
+    padding: 5px;
+    display: flex;
 }
 
 .grave-information-panel img, .search-result img{
@@ -23,18 +39,31 @@
     font-size: 0px;
 }
 
-.grave-information-panel .info-container{
-    width: 95%;
-}
-.grave-information-panel img{
+.grave-information-panel .bottom-info-container{
     width: 100%;
 }
-.grave-information-panel .top-container{
+.grave-information-panel img{
+    flex: 1;
+    width: 50%;
+
+    border: 1px solid var(--text-secondary-color);
+}
+.additional-grave-info{
+    flex: 1;
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+
+    min-width: 130px;
+}
+
+.location-box{
+    font-weight: bold;
 }
 
 .grave-people-header{
+    border-bottom: 1px solid var(--text-secondary-color);
     font-size: var(--font-size-big);
     display: flex;
     align-items: center;
@@ -47,7 +76,13 @@
 }
 
 .people-container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
     overflow-y: auto;
+
+    gap: 0;
+    border-collapse: collapse;
 }
 
 .person-info{
@@ -58,7 +93,6 @@
 .person-info-name{
     font-size: var(--font-size-medium);
     margin: 0px;
-    border-top: 1px solid var(--text-secondary-color);
 }
 
 i.date-container{
@@ -69,3 +103,27 @@ i.date-container{
 
     align-self: center;
 }
+
+@media only screen and (min-width: 600px) {
+    .grave-information-panel .top-part{
+        border-bottom: 1px solid var(--text-secondary-color);
+    }
+
+    .grave-information-panel{
+        border-left: 1px solid var(--text-secondary-color);
+    }
+  }
+
+@media only screen and (max-width: 600px) {
+    .grave-information-panel .top-part{
+        border-top: 1px solid var(--text-secondary-color);
+    }
+
+    .grave-information-panel{
+        display: flex;
+        flex-direction: column-reverse;
+        border-top: 1px solid var(--text-secondary-color);
+    }
+}
+
+

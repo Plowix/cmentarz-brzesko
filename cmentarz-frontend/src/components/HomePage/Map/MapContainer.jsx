@@ -17,7 +17,7 @@ function Map({graves, selectedGraveID, handleSelectGrave, zoomFlag, setZoomFlag,
                 handleSelectGrave={handleSelectGrave}
             />
 
-            {selectedGraveID === "0" ? <GraveInfoEmpty/> : <GraveInfo setModalImage={setModalImage} selectedGraveId={selectedGraveID}/>}
+            {selectedGraveID === "0" ? <GraveInfoEmpty/> : <GraveInfo setModalImage={setModalImage} selectedGraveId={selectedGraveID} setZoomFlag={setZoomFlag}/>}
         </div>
     )
 }

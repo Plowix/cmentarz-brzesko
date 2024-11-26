@@ -24,14 +24,17 @@ class GraveController {
     public static function getGraveDetails($graveId) {
         $conn = getDatabaseConnection();
         $graveData = [
+            "id" => "",
             "photo_path" => "",
             "people" => []
         ];
 
         // Pobierz zdjęcie grobu
-        $query = "SELECT photo_path FROM graves WHERE id = '".$conn->real_escape_string($graveId)."'";
+        $query = "SELECT id, photo_path FROM graves WHERE id = '".$conn->real_escape_string($graveId)."'";
         if ($result = $conn->query($query)) { 
-            $graveData["photo_path"] = $result->fetch_assoc()['photo_path'];
+            $row =  $result->fetch_assoc();
+            $graveData["id"] = $row['id'];
+            $graveData["photo_path"] = $row['photo_path'];
         }
 
         // Pobierz osoby w grobie

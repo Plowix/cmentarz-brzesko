@@ -128,7 +128,6 @@ input[type=number] {
     height: 300px;
     width: 200px;
 
-    padding:5px;
     padding-bottom: 10px;
     border: 1px solid var(--text-secondary-color);
 
@@ -139,13 +138,14 @@ input[type=number] {
     transition: 0.05s ease-in;
 }
 
-.search-result:hover{
+.search-result:hover, .search-result img:hover{
     background-color: var(--text-secondary-color) !important;
     border-color: var(--bg-secondary-color) !important;
     color: var(--bg-secondary-color) !important;
 }
 
 .search-result img{
+    min-width: 200px;
     width: 100%;
     border: 1px solid var(--text-secondary-color);
 }

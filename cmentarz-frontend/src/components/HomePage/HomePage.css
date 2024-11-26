@@ -43,6 +43,10 @@
     #map{
         flex: 5;
     }
+
+    .grave-information-panel{
+        border-left: 1px solid var(--text-secondary-color);
+    }
   }
 
 
@@ -59,5 +63,6 @@
     .grave-information-panel{
         display: flex;
         flex-direction: column-reverse;
+        border-top: 1px solid var(--text-secondary-color);
     }
   }

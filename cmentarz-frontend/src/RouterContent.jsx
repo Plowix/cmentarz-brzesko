@@ -26,10 +26,6 @@ function RouterContent(){
     const closeModal = () => {
       setModalImage('');
     }
-
-    useEffect(() => {
-      console.log('User updated:', user);
-    }, [user]);
   
     useEffect(() => {
       document.title = 'Cmentarz w Brzesku';
@@ -38,7 +34,6 @@ function RouterContent(){
   
     const apiUrl = process.env.REACT_APP_API_URL;
   
-    console.log(apiUrl+'/check-session.php');
     const checkSession = async () => {
       const response = await fetch(apiUrl+'/check-session.php', {
         method: 'GET',
@@ -51,7 +46,6 @@ function RouterContent(){
       } else {
         setUser(null);
       }
-      console.log(user);
     };
   
     const logout = async () => {
@@ -91,7 +85,7 @@ function RouterContent(){
                   <Link to="/add-data" onClick={toggleMenu}>Dodaj dane</Link>
                   {user.role === 'admin' && <Link to="/admin-panel" onClick={toggleMenu}>Panel administracyjny</Link>}
                   <button 
-                    className={loadingFlag && 'loading'}
+                    className={loadingFlag ? 'loading' : ''}
                     onClick={(e)=>{
                       logout();
                       setLoadingFlag(true);
