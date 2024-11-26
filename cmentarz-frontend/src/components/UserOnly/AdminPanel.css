@@ -1,0 +1,26 @@
+.add-user-form{
+    max-width: 90vw;
+    width: 400px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    padding: 10px;
+
+    border-radius: 15px;
+    border: 1px solid var(--text-secondary-color);
+}
+
+.user-list{
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+.user-list, th, td{
+    border: 1px solid var(--text-secondary-color);
+}
+
+th,td{
+    padding: 5px 20px;
+}

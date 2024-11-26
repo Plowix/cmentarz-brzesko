@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import './AdminPanel.css';
+
 const AdminPanel = () => {
     const [users, setUsers] = useState([]);
     const [newUser, setNewUser] = useState({
@@ -52,12 +54,12 @@ const AdminPanel = () => {
     };
 
     return (
-        <div>
+        <main className='admin-container'>
             <h2>Panel Administracyjny</h2>
             <h3>Lista użytkowników</h3>
             {error && <div className="error">{error}</div>}
             {success && <div className="success">{success}</div>}
-            <table>
+            <table className='user-list'>
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -76,10 +78,10 @@ const AdminPanel = () => {
                 </tbody>
             </table>
 
-            <h3>Dodaj nowego użytkownika</h3>
-            <form onSubmit={handleAddUser}>
-                <div>
-                    <label>Username:</label>
+            <form className='add-user-form' onSubmit={handleAddUser}>
+                <h3>Dodaj nowego użytkownika</h3>
+                <div className='input-container'>
+                    <label>Nazwa:</label>
                     <input
                         type="text"
                         value={newUser.username}
@@ -87,7 +89,7 @@ const AdminPanel = () => {
                         required
                     />
                 </div>
-                <div>
+                <div className='input-container'>
                     <label>Hasło:</label>
                     <input
                         type="password"
@@ -106,9 +108,9 @@ const AdminPanel = () => {
                         <option value="admin">Administrator</option>
                     </select>
                 </div>
-                <button type="submit">Dodaj użytkownika</button>
+                <button className='btn btn-outline-secondary' type="submit">Dodaj użytkownika</button>
             </form>
-        </div>
+        </main>
     );
 };
 
