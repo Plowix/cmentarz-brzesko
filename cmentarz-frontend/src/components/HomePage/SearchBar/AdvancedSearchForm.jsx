@@ -1,5 +1,3 @@
-//!!! dodać walidację żeby nie można wpisywać napisów
-
 function AdvancedSearchForm({formData, errors, handleInputChange, handleKeyDown}){
     return(
         <div className="advanced-search-inputs">

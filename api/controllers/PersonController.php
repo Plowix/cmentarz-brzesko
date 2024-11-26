@@ -36,7 +36,7 @@ class PersonController {
             $params[] = $birthMonth;
         }
         if ($birthYear !== '') {
-            $sql .= " AND YEAR(persons.birth_year) = ?";
+            $sql .= " AND persons.birth_year = ?";
             $params[] = $birthYear;
         }
 
@@ -49,7 +49,7 @@ class PersonController {
             $params[] = $deathMonth;
         }
         if ($deathYear !== '') {
-            $sql .= " AND YEAR(persons.death_year) = ?";
+            $sql .= " AND persons.death_year = ?";
             $params[] = $deathYear;
         }
 

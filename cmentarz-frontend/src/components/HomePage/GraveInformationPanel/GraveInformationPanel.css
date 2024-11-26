@@ -50,12 +50,22 @@
     overflow-y: auto;
 }
 
+.person-info{
+    display: flex;
+    flex-direction: column;
+}
+
 .person-info-name{
     font-size: var(--font-size-medium);
     margin: 0px;
     border-top: 1px solid var(--text-secondary-color);
 }
 
-.person-info i{
+i.date-container{
     font-size: var(--font-size-small);
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+
+    align-self: center;
 }
