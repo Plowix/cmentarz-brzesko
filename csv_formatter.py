@@ -15,15 +15,27 @@ def process_date(date_str):
         if "r." in date_str:
             return "00", "00", date_str[:-2].strip()
         
-        date_obj = datetime.strptime(date_str, "%d.%m.%Y")
-        return date_obj.day, date_obj.month, date_obj.year
-    except ValueError:
         try:
-            date_obj = datetime.strptime(date_str, "%m/%d/%Y")
+            date_obj = datetime.strptime(date_str, "%d.%m.%Y")
             return date_obj.day, date_obj.month, date_obj.year
         except ValueError:
-            
-            return "00", "00", "0000"
+            pass
+        try:
+            date_obj = datetime.strptime(date_str, "%d/%m/%Y")
+            return date_obj.day, date_obj.month, date_obj.year
+        except ValueError:
+            pass
+        try:
+            date_obj = datetime.strptime(date_str, "%m.%d.%Y")
+            return date_obj.day, date_obj.month, date_obj.year
+        except ValueError:
+            pass
+        date_obj = datetime.strptime(date_str, "%m/%d/%Y")
+        return date_obj.day, date_obj.month, date_obj.year
+
+    except ValueError:
+        # Jeśli wszystko inne zawiedzie
+        return "00", "00", "0000"
 
 df = pd.read_csv(sys.argv[1])
 
