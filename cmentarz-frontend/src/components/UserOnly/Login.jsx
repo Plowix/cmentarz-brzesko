@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
-const Login = () => {
+import './Login.css'
+
+const Login = ({loadingFlag, handleLoadingFlag}) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -8,6 +10,7 @@ const Login = () => {
     const apiUrl = process.env.REACT_APP_API_URL;
 
     const handleLogin = async (e) => {
+        handleLoadingFlag(true);
         e.preventDefault();
     
         console.log('Dane logowania:', { username, password });
@@ -21,18 +24,19 @@ const Login = () => {
                 username: username,
                 password: password,
             }),
-            credentials: 'include', // Ważne dla ciasteczek sesji
+            credentials: 'include',
         });
+
+        handleLoadingFlag(false);
     
-        // Zapisz odpowiedź w konsoli przed jej próbowaniem sparsować
         const text = await response.text();
         console.log('Odpowiedź serwera:', text);
     
         try {
-            const data = JSON.parse(text);  // Próba parsowania odpowiedzi jako JSON
+            const data = JSON.parse(text);  
             if (data.user) {
                 console.log('Zalogowano pomyślnie', data.user);
-                window.location.href = '/'; // Przekierowanie po zalogowaniu
+                window.location.href = '/'; 
             } else {
                 setError(data.error || 'Nieznany błąd');
             }
@@ -45,30 +49,43 @@ const Login = () => {
 
     return (
         <main className="login-container">
-            <h2>Logowanie</h2>
-            {error && <div className="error">{error}</div>}
             <form onSubmit={handleLogin}>
-                <div>
+                <h2>Logowanie</h2>
+                <div className='input-container'>
                     <label htmlFor="username">Nazwa użytkownika:</label>
                     <input
                         type="text"
                         id="username"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
+                        placeholder='Nazwa użytkownika'
                         required
                     />
                 </div>
-                <div>
+                <div className='input-container'>
                     <label htmlFor="password">Hasło:</label>
                     <input
                         type="password"
                         id="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        placeholder='Hasło'
                         required
                     />
                 </div>
-                <button type="submit">Zaloguj się</button>
+                <div className="wrong-input">
+                    {error && error}
+                </div>
+                <button 
+                    className={'login-button btn btn-outline-secondary ' + (loadingFlag ? 'loading' : '')}
+                    type="submit"
+                    onClick={(e)=>{
+                        if(username !== '' && password !== '')
+                        handleLoadingFlag(true)
+                    }}
+                    >
+                        {loadingFlag ? "Ładowanie..." : "Zaloguj się"} 
+                </button>
             </form>
         </main>
     );

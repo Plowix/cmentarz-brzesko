@@ -13,6 +13,14 @@ function RouterContent(){
     const [menuOpen, setMenuOpen] = useState(false);
     const [modalImage, setModalImage] = useState('');
     const [user, setUser] = useState(null);
+    const [loadingFlag, setLoadingFlag] = useState(false);
+
+    const handleLoadingFlag = (newState) => {
+      setLoadingFlag(newState);
+      if(newState === true) document.body.classList.add('loading');
+      else document.body.classList.remove('loading');
+  }
+
     const navigate = useNavigate();
   
     const closeModal = () => {
@@ -51,6 +59,7 @@ function RouterContent(){
         method: 'GET',
         credentials: 'include',
       });
+      handleLoadingFlag(false)
   
       const data = await response.json();
       setUser(null);
@@ -81,7 +90,14 @@ function RouterContent(){
                 <>
                   <Link to="/add-data" onClick={toggleMenu}>Dodaj dane</Link>
                   {user.role === 'admin' && <Link to="/admin-panel" onClick={toggleMenu}>Panel administracyjny</Link>}
-                  <button onClick={logout}>Wyloguj</button>
+                  <button 
+                    className={loadingFlag && 'loading'}
+                    onClick={(e)=>{
+                      logout();
+                      setLoadingFlag(true);
+                      }}>
+                      Wyloguj
+                  </button>
                 </>
               )}
             </div>
@@ -89,7 +105,7 @@ function RouterContent(){
           <Routes>
             <Route path="/" element={<HomePage setModalImage={setModalImage}/>}/>
             <Route path="/kontakt" element={<Contact/>}/>
-            <Route path="/login" element={<Login setUser={setUser}/>}/>
+            <Route path="/login" element={<Login loadingFlag={loadingFlag} handleLoadingFlag={handleLoadingFlag} setUser={setUser}/>}/>
             {user && user.role === 'admin' && (
                     <Route path="/admin-panel" element={<AdminPanel />} />
                 )}

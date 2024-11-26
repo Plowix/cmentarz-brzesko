@@ -15,45 +15,23 @@ input[type=number] {
     margin: 0px;
 }
 
+
 .search-bar-form .top-part{
     display: flex;
     gap: 10px;
-}
-
-.search-bar-form input{
-    padding: 10px;
-
-    border-radius: 15px;
-    font-size: var(--font-size-medium);
-    background-color: var(--bg-secondary-color);
-    color: var(--text-secondary-color);
-
-    border: 1px solid var(--text-secondary-color);
-
-    transition: 0.15s ease-in;
 }
 
 .map-search-bar{
     width: 100%;    
 }
 
+.search-bar-form{
+    font-size: var(--font-size-medium);
+}
+
 .search-bar-form input:focus{
     border: 1px solid gray;
     box-shadow: none;
-}
-
-.btn-outline-secondary{
-    border-radius: 15px !important;
-    border-color: var(--text-secondary-color) !important;
-    color: var(--text-secondary-color) !important;
-}
-
-.btn-outline-secondary:hover{
-    background-color: var(--text-secondary-color) !important;
-    border-color: var(--bg-secondary-color) !important;
-    color: var(--bg-secondary-color) !important;
-
-    box-shadow: none !important;
 }
 
 .search-bar-form button{
@@ -99,15 +77,6 @@ input[type=number] {
     min-width: 300px;
 
     color: var(--text-secondary-color);
-}
-
-.wrong-input{
-    color: rgb(167, 34, 34) !important;
-    border-color: rgb(117, 21, 21) !important;
-}
-
-.wrong-input:hover{
-    border-color: rgb(143, 0, 0) !important;
 }
 
 .result-box-header{
