@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react
 import ModalDisplay from './components/Decor/ModalDisplay';
 import Header from './components/Header/Header'
 import HomePage from './components/HomePage/HomePage';
-import Contact from './components/Contact';
+import Contact from './components/Contact/Contact';
 import Footer from './components/Footer';
 import Login from './components/UserOnly/Login';
 import AdminPanel from './components/UserOnly/AdminPanel';

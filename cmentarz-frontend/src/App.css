@@ -93,7 +93,8 @@ footer{
     margin-top: auto;
 }
 
-input{
+input, textarea{
+    resize: none;
     padding: 10px;
 
     border-radius: 15px;
@@ -105,9 +106,20 @@ input{
     transition: 0.15s ease-in;
 }
 
-input:hover{
+input:hover, textarea:hover{
     border: 1px solid gray;
     box-shadow: none;
+}
+
+.input-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.input-container input{
+    width: 100%;
 }
 
 .wrong-input{

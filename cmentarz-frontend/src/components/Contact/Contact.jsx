@@ -1,7 +1,11 @@
+import ContactForm from "./ContactForm";
+
+import './Contact.css'
+
 function Contact(){
     return(
         <main>
-            <p>Kontakt</p>
+            <ContactForm/>
         </main>
     )
 }

@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $data->username ?? '';
     $password = $data->password ?? '';
 
-    if (empty($username) || empty($password)) {
+    if ($username === '' || $password === '') {
         echo json_encode(['error' => 'Brak wymaganych danych']);
         exit;
     }

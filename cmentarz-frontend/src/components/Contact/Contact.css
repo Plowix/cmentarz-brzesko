@@ -1,0 +1,13 @@
+.contact-container{
+    width: 450px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.contact-container textarea{
+    width: 100%;
+    height: 200px;
+}
