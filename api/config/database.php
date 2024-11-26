@@ -9,6 +9,8 @@ function getDatabaseConnection(){
         die(json_encode(['error' => "Nie udało się połączyć z bazą danych"]));
     }
 
+    $conn->set_charset("utf8mb4");
+
     return $conn;
 }
 ?>

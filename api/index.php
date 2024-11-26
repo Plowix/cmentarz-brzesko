@@ -24,8 +24,14 @@ if (isset($_GET["grave_coords"])) {
     $deathMonth = isset($_GET["death_month"]) ? $_GET["death_month"] : '';
     $deathYear = isset($_GET["death_year"]) ? $_GET["death_year"] : '';
 
+    // Logujemy otrzymane dane z zapytania
+    error_log("Received search query: " . $searchQuery);
+    error_log("Birth Date: $birthDay-$birthMonth-$birthYear, Death Date: $deathDay-$deathMonth-$deathYear");
+
+    // Wywołujemy metodę kontroli
     PersonController::searchPeople($searchQuery, $birthDay, $birthMonth, $birthYear, $deathDay, $deathMonth, $deathYear);
 } else {
-    echo json_encode(['error' => 'błędna próba połączenia z php']);
+    echo json_encode(['error' => 'Błędna próba połączenia z PHP']);
+    error_log('Invalid request: ' . json_encode($_GET));  // Zapisujemy próbę niepoprawnego zapytania
 }
 ?>
