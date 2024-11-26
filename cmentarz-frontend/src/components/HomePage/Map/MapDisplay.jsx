@@ -1,14 +1,18 @@
-import { MapContainer, TileLayer } from 'react-leaflet';
+import { LayersControl, FeatureGroup, MapContainer, TileLayer } from 'react-leaflet';
 import { useState } from 'react';
 
 import GraveMarker from './GraveMarker';
+import SelectedGraveMarker from './SelectedGraveMarker'
 import GraveZoomHandler from './GraveZoomHandler';
 import ZoomScaleHandler from './ZoomScaleHandler';
+
+import 'leaflet/dist/leaflet.css';
 
 function MapDisplay({graves, selectedGraveID, zoomFlag, setZoomFlag, handleSelectGrave}){
     const [sizeMult, setSizeMult] = useState(1);
 
     return(
+        
         <MapContainer 
                 id="map" 
                 wheelPxPerZoomLevel={200}
@@ -32,17 +36,28 @@ function MapDisplay({graves, selectedGraveID, zoomFlag, setZoomFlag, handleSelec
                 <ZoomScaleHandler
                     setSizeMult={setSizeMult}
                 />
-                {graves.map(function(grave){
-                    return(
-                        <GraveMarker
-                            key={grave.id}
-                            graveData={grave}
-                            isSelected={grave.id === selectedGraveID}
-                            handleSelectGrave={handleSelectGrave}
-                            sizeMult={sizeMult}
-                        />
-                    )
-                })}
+
+                <LayersControl position="topright">
+                    <LayersControl.Overlay name="Groby" checked={false}>
+                    <FeatureGroup>
+                    {graves.map(function(grave){
+                        return(
+                            <GraveMarker
+                                key={grave.id}
+                                graveData={grave}
+                                isSelected={grave.id === selectedGraveID}
+                                handleSelectGrave={handleSelectGrave}
+                                sizeMult={sizeMult}
+                            />
+                        )
+                    })}
+                    </FeatureGroup>
+                </LayersControl.Overlay>
+            </LayersControl>
+            {selectedGraveID !== '0' && <SelectedGraveMarker
+                        graves={graves}
+                        selectedGraveID={selectedGraveID}
+                    />}
             </MapContainer>
     )
 }

@@ -10,6 +10,10 @@
     box-shadow: 0px 0px 2px gray;
 }
 
+.leaflet-default-icon-path {
+    background-image: url('https://unpkg.com/leaflet/dist/images/marker-icon.png');
+}
+
 .grave-marker-icon{
     display: flex !important;
     justify-content: center;
@@ -43,11 +47,7 @@
     #map{
         flex: 5;
     }
-
-    .grave-information-panel{
-        border-left: 1px solid var(--text-secondary-color);
-    }
-  }
+}
 
 
 @media only screen and (max-width: 600px) {
