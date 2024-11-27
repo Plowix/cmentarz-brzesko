@@ -13,7 +13,7 @@
     cursor: wait !important;
 }
 
-header, main, footer, body{
+header, main, footer, body, .navbar{
     color: var(--text-color);
     transition: 0.2s ease-in;
 }

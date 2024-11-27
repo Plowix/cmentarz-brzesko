@@ -82,7 +82,7 @@ function RouterContent(){
               <Link to="/kontakt" onClick={toggleMenu}>Kontakt</Link>
               {user && (
                 <>
-                  <Link to="/add-data" onClick={toggleMenu}>Dodaj dane</Link>
+                  <Link to="/dodaj-dane" onClick={toggleMenu}>Dodaj dane</Link>
                   {user.role === 'admin' && <Link to="/admin-panel" onClick={toggleMenu}>Panel administracyjny</Link>}
                   <button 
                     className={loadingFlag ? 'loading' : ''}
