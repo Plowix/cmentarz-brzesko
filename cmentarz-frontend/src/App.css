@@ -15,7 +15,7 @@
 
 header, main, footer, body{
     color: var(--text-color);
-    transition: 0.1s ease-in;
+    transition: 0.2s ease-in;
 }
 
 body{
