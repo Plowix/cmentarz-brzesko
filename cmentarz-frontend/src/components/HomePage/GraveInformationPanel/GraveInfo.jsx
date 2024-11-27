@@ -34,7 +34,7 @@ function GraveInfo({selectedGraveId, setModalImage, setZoomFlag}){
             {isLoading ? <Spinner/> : <>
             <div className="top-part">
             <ModalImage
-                imageUrl={process.env.REACT_APP_URL+graveData.photo_path}
+                imageUrl={process.env.REACT_APP_URL+"/images/graves/"+(graveData.id.replace("/", "_"))+".jpg"}
                 setModalImage={setModalImage}
                 altText={"Zdjęcie grobu"}
                 />
