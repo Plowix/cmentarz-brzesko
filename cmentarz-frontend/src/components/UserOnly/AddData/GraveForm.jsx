@@ -1,11 +1,18 @@
-import { useState } from 'react';
-import PersonForm from './PersonForm';
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import heic2any from "heic2any";
 import proj4 from "proj4";
 
+import PersonForm from './PersonForm';
+
 function GraveForm() {
+    const navigate = useNavigate();
+
+    const [editGraveID, setEditGraveId] = useState('0');
+
     const [graveData, setGraveData] = useState({
         sectorNumber: '',
         graveNumber: '',
@@ -59,6 +66,57 @@ function GraveForm() {
         addPerson();
     };
 
+    const location = useLocation();
+    useEffect(() => {
+        const searchParams = new URLSearchParams(location.search);
+        const editId = searchParams.get('edit-id');
+        if (editId) {
+            setEditGraveId(editId); 
+        }
+        else setEditGraveId('0')
+    }, [location]);
+
+    const parseDate = (date) => {
+        if (!date) return { year: '', month: '', day: '' };
+        const [year, month, day] = date.split('-');
+        return { year, month, day };
+    };
+
+    useEffect(() => {
+        if(editGraveID != '0'){
+        fetch(apiUrl+'/?grave_id='+encodeURIComponent(editGraveID))
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Błąd podczas pobierania danych");
+                }
+                return response.json();
+            })
+            .then((data) => {
+                console.log(data);
+                const location = convertWSG84toPUWG2000(parseFloat(data.location[0]), parseFloat(data.location[1]));
+                setGraveData({
+                    sectorNumber: data.id.split('/')[0],
+                    graveNumber:  data.id.split('/')[1],
+                    xCoord: location[0],
+                    yCoord: location[1],
+                    image: null,
+                });
+
+                const people = data.people.map(person => ({
+                    fullName: person.full_name, 
+                    birthYear: parseDate(person.birth_date).year,  
+                    birthMonth: parseDate(person.birth_date).month,  
+                    birthDay: parseDate(person.birth_date).day,  
+                    deathYear: parseDate(person.death_date).year,  
+                    deathMonth: parseDate(person.death_date).month,  
+                    deathDay: parseDate(person.death_date).day,  
+                }));
+                setPeopleData(people);
+            })
+            .catch((error) => console.error("Błąd:", error));
+        }
+    }, [editGraveID]);
+
     const apiUrl = process.env.REACT_APP_API_URL;
 
     const convertImageToJPG = (file) => {
@@ -94,11 +152,20 @@ function GraveForm() {
     };
 
     const puwg2000 = "+proj=tmerc +lat_0=0 +lon_0=21 +k=0.999923 +x_0=7500000 +y_0=0 +ellps=GRS80 +units=m +no_defs";
-    const wgs84 = proj4.defs("EPSG:4326");
+    const wgs84 = "+proj=longlat +datum=WGS84 +no_defs";
 
     function convertPUWG2000toWGS84(x, y) {
         try {
             const [lon, lat] = proj4(puwg2000, wgs84, [x, y]);
+            return [lat, lon];
+        } catch (error) {
+            throw new Error("Nie udało się przekształcić współrzędnych: " + error.message);
+        }
+    }
+
+    function convertWSG84toPUWG2000(x, y) {
+        try {
+            const [lon, lat] = proj4(wgs84, puwg2000, [x, y]);
             return [lat, lon];
         } catch (error) {
             throw new Error("Nie udało się przekształcić współrzędnych: " + error.message);
@@ -130,6 +197,7 @@ function GraveForm() {
             const graveResponse = await fetch(`${apiUrl}`, {
                 method: 'POST',
                 body: formData,
+                credentials: 'include'
             });
     
             if (!graveResponse.ok) {
@@ -143,10 +211,9 @@ function GraveForm() {
     };
 
     const submitPeople = async (graveId) => {
+        console.log(peopleData);
         try {
-            for (const person of peopleData) {
-                console.log(person);
-    
+            for (const person of peopleData) {    
                 const birthYear = person.birthYear || 0;
                 const birthMonth = person.birthMonth || 0;
                 const birthDay = person.birthDay || 0;
@@ -170,14 +237,14 @@ function GraveForm() {
                 const response = await fetch(`${apiUrl}`, {
                     method: 'POST',
                     body: formData,
+                    credentials: 'include'
                 });
     
                 if (!response.ok) {
                     throw new Error('Błąd podczas wysyłania danych osoby');
                 }
             }
-    
-            alert('Grób oraz osoby zostały pomyślnie zapisane!');
+            navigate(`/`);
         } catch (error) {
             console.error('Error while submitting people data:', error);
         }

@@ -104,6 +104,13 @@ i.date-container{
     align-self: center;
 }
 
+.admin-panel-container button{
+    background: none;
+    border: none;
+
+    margin: 5px;
+}
+
 @media only screen and (min-width: 600px) {
     .grave-information-panel .top-part{
         border-bottom: 1px solid var(--text-secondary-color);

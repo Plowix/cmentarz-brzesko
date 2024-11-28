@@ -105,7 +105,7 @@ function RouterContent(){
             </div>
           </header>
           <Routes>
-            <Route path="/" element={<HomePage setModalImage={setModalImage}/>}/>
+            <Route path="/" element={<HomePage user={user} setModalImage={setModalImage}/>}/>
             <Route path="/kontakt" element={<Contact/>}/>
             <Route path="/login" element={<Login loadingFlag={loadingFlag} handleLoadingFlag={handleLoadingFlag} setUser={setUser}/>}/>
             {user &&

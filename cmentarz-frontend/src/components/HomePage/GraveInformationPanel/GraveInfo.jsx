@@ -6,10 +6,11 @@ import { faCross, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import ModalImage from '../../Decor/ModalImage'
 import Spinner from "../../Decor/Spinner";
 import PersonInfo from "./PersonInfo";
+import GraveEditPanel from "./GraveEditPanel";
 
 import './GraveInformationPanel.css';
 
-function GraveInfo({selectedGraveId, setModalImage, setZoomFlag}){
+function GraveInfo({user, selectedGraveId, setModalImage, setZoomFlag}){
     const [graveData, setGraveData] = useState({});
     const [isLoading, setIsLoading] = useState(true)
 
@@ -32,6 +33,7 @@ function GraveInfo({selectedGraveId, setModalImage, setZoomFlag}){
     return(
         <div className="grave-information-panel expanded">
             {isLoading ? <Spinner/> : <>
+            {user && <GraveEditPanel graveID={graveData.id}/>}
             <div className="top-part">
             <ModalImage
                 imageUrl={process.env.REACT_APP_URL+"/images/graves/"+(graveData.id.replace("/", "_"))+".jpg"}

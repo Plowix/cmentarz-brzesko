@@ -3,22 +3,32 @@ require_once __DIR__ . '/config/database.php';
 require_once __DIR__ . '/controllers/GraveController.php';
 require_once __DIR__ . '/controllers/PersonController.php';
 
-header('Content-Type: application/json; charset=utf-8');
-header('Access-Control-Allow-Origin: *'); 
-header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS'); 
-header('Access-Control-Allow-Headers: Content-Type, Authorization'); 
+$environment = getenv('APP_ENV') ?: 'local'; 
 
-// Obsługuje różne zapytania
+header('Content-Type: application/json; charset=utf-8');
+if ($environment === 'production') {
+    header('Access-Control-Allow-Origin: https://pszczypula.cba.com');
+} else {
+    header('Access-Control-Allow-Origin: http://localhost:3000');
+}
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Authorization');
+header('Access-Control-Allow-Credentials: true'); 
+
+session_start();
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!isset($_SESSION['user'])) {
         echo json_encode(['error' => 'Brak uprawnień']);
         exit;
     }
-    if (isset($_FILES['image']) && isset($_POST['graveId'])) {
+    if (isset($_POST['graveId']) && !isset($_POST['fullName'])) {
+        error_log("Dodawanie grobu");
         GraveController::addGrave();
     }
 
     if (isset($_POST['graveId']) && isset($_POST['fullName'])) {
+        error_log("Dodawanie osoby");
         PersonController::addPerson();
     }
 }
@@ -35,15 +45,17 @@ else if (isset($_GET["grave_coords"])) {
     $deathDay = isset($_GET["death_day"]) ? $_GET["death_day"] : '';
     $deathMonth = isset($_GET["death_month"]) ? $_GET["death_month"] : '';
     $deathYear = isset($_GET["death_year"]) ? $_GET["death_year"] : '';
-
-    // Logujemy otrzymane dane z zapytania
-    error_log("Received search query: " . $searchQuery);
-    error_log("Birth Date: $birthDay-$birthMonth-$birthYear, Death Date: $deathDay-$deathMonth-$deathYear");
-
-    // Wywołujemy metodę kontroli
     PersonController::searchPeople($searchQuery, $birthDay, $birthMonth, $birthYear, $deathDay, $deathMonth, $deathYear);
-} else {
+}else if(isset($_GET['delete_grave_id'])){
+    if (!isset($_SESSION['user'])) {
+        echo json_encode(['error' => 'Brak uprawnień']);
+        exit;
+    }
+    $graveId = $_GET['delete_grave_id'];
+    GraveController::deleteGrave($graveId);
+} 
+else {
     echo json_encode(['error' => 'Błędna próba połączenia z PHP']);
-    error_log('Invalid request: ' . json_encode($_GET));  // Zapisujemy próbę niepoprawnego zapytania
+    error_log('Invalid request: ' . json_encode($_GET)); 
 }
 ?>

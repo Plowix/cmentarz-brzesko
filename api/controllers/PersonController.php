@@ -61,13 +61,9 @@ class PersonController {
             $params[] = $deathYear;
         }
 
-        // Logowanie zapytania SQL
-        error_log("SQL Query: " . $sql);
-        error_log("Parameters: " . print_r($params, true));
 
-        // Przygotowanie zapytania
         if ($stmt = $conn->prepare($sql)) {
-            $types = str_repeat("s", count($params)); // Określenie typu parametrów
+            $types = str_repeat("s", count($params));
             $stmt->bind_param($types, ...$params);
 
             // Wykonanie zapytania
@@ -79,7 +75,6 @@ class PersonController {
 
             $result = $stmt->get_result();
 
-            // Jeżeli wynik jest pusty, zwrócimy pustą tablicę
             if ($result->num_rows === 0) {
                 echo json_encode([]);
             } else {
@@ -95,7 +90,6 @@ class PersonController {
                     ];
                 }
 
-                // Zwracamy dane w formacie JSON
                 echo json_encode($people);
             }
         } else {
@@ -103,7 +97,6 @@ class PersonController {
             echo json_encode(['error' => 'Błąd zapytania do bazy danych']);
         }
 
-        // Zamykanie połączenia
         $conn->close();
     }
 

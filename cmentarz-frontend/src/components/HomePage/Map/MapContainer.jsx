@@ -1,12 +1,8 @@
-import { MapContainer, TileLayer, useMap } from 'react-leaflet';
-
 import GraveInfoEmpty from '../GraveInformationPanel/GraveInfoEmpty';
 import GraveInfo from '../GraveInformationPanel/GraveInfo';
 import MapDisplay from './MapDisplay';
-
-import { useState, useEffect } from 'react';
     
-function Map({graves, selectedGraveID, handleSelectGrave, zoomFlag, setZoomFlag, setModalImage}){
+function Map({user, graves, selectedGraveID, handleSelectGrave, zoomFlag, setZoomFlag, setModalImage}){
     return(
         <div className="map-container">
             <MapDisplay
@@ -17,7 +13,7 @@ function Map({graves, selectedGraveID, handleSelectGrave, zoomFlag, setZoomFlag,
                 handleSelectGrave={handleSelectGrave}
             />
 
-            {selectedGraveID === "0" ? <GraveInfoEmpty/> : <GraveInfo setModalImage={setModalImage} selectedGraveId={selectedGraveID} setZoomFlag={setZoomFlag}/>}
+            {selectedGraveID === "0" ? <GraveInfoEmpty/> : <GraveInfo user={user} setModalImage={setModalImage} selectedGraveId={selectedGraveID} setZoomFlag={setZoomFlag}/>}
         </div>
     )
 }
