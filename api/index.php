@@ -10,6 +10,10 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization');
 
 // Obsługuje różne zapytania
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!isset($_SESSION['user'])) {
+        echo json_encode(['error' => 'Brak uprawnień']);
+        exit;
+    }
     if (isset($_FILES['image']) && isset($_POST['graveId'])) {
         GraveController::addGrave();
     }
