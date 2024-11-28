@@ -106,6 +106,38 @@ class PersonController {
         // Zamykanie połączenia
         $conn->close();
     }
+
+    public static function addPerson() {
+        $conn = getDatabaseConnection();
+
+        $graveId = $_POST['graveId'];
+        $fullName = $_POST['fullName'];
+        $birthYear = $_POST['birthYear'];
+        $birthMonth = $_POST['birthMonth'];
+        $birthDay = $_POST['birthDay'];
+        $deathYear = $_POST['deathYear'];
+        $deathMonth = $_POST['deathMonth'];
+        $deathDay = $_POST['deathDay'];
+
+        $query = "INSERT INTO persons 
+                (grave_id, full_name, birth_year, birth_month, birth_day, death_year, death_month, death_day) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+        if ($stmt = $conn->prepare($query)) {
+            $stmt->bind_param("ssssssss", $graveId, $fullName, $birthYear, $birthMonth, $birthDay, $deathYear, $deathMonth, $deathDay);
+            
+            if ($stmt->execute()) {
+                echo json_encode(['success' => 'Osoba została pomyślnie dodana']);
+            } else {
+                echo json_encode(['error' => 'Błąd dodawania osoby']);
+            }
+        } else {
+            echo json_encode(['error' => 'Błąd przygotowania zapytania']);
+        }
+
+        $conn->close();
+    }
+
 }
 
 

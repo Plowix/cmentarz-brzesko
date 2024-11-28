@@ -1,3 +1,8 @@
+.add-grave-form{
+    width: 900px;
+    max-width: 95vw;
+}
+
 .grave-data-top-container, .coordinate-container{
     display: flex;
     gap: 10px;
@@ -25,7 +30,49 @@
 }
 
 
+.person-container{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 10px;
 
+    margin: 10px 0px;
+    border-radius: 15px;
+    padding: 10px;
+    border: 1px solid var(--text-secondary-color);
+}
+
+.dates-input-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.dates-input-container input{
+    text-align: center;
+}
+
+.birth-inputs-container, .death-inputs-container{
+    display: flex;
+    align-items: baseline;
+}
+
+
+.day-input, .month-input{
+    width: 3em;
+}
+
+.year-input{
+    width: 6em;
+}
+
+.delete-person-entry-button{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    border: none;
+    background: none;
+}
 
 
 
@@ -33,3 +80,17 @@
     font-size: var(--font-size-medium) !important;
     font-weight: bold !important;
 }
+
+@media only screen and (max-width: 600px) {
+    .dates-input-container{
+        flex-direction: column;
+    }
+
+    .dates-input-container h4{
+        width: 200px;
+    }
+
+    .birth-inputs-container, .death-inputs-container{
+        justify-content: space-between;
+    }
+  }

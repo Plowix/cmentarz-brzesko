@@ -3,14 +3,22 @@ require_once __DIR__ . '/config/database.php';
 require_once __DIR__ . '/controllers/GraveController.php';
 require_once __DIR__ . '/controllers/PersonController.php';
 
-header('Content-Type: application/json');
+header('Content-Type: application/json; charset=utf-8');
 header('Access-Control-Allow-Origin: *'); 
 header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS'); 
 header('Access-Control-Allow-Headers: Content-Type, Authorization'); 
-header('Content-Type: application/json; charset=utf-8');
 
 // Obsługuje różne zapytania
-if (isset($_GET["grave_coords"])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_FILES['image']) && isset($_POST['graveId'])) {
+        GraveController::addGrave();
+    }
+
+    if (isset($_POST['graveId']) && isset($_POST['fullName'])) {
+        PersonController::addPerson();
+    }
+}
+else if (isset($_GET["grave_coords"])) {
     GraveController::getAllGraveCoordinates();
 } else if (isset($_GET["grave_id"])) {
     $graveID = $_GET["grave_id"];
