@@ -8,6 +8,7 @@ import Contact from './components/Contact/Contact';
 import Footer from './components/Footer';
 import Login from './components/UserOnly/Login';
 import AdminPanel from './components/UserOnly/AdminPanel';
+import AddData from './components/UserOnly/AddData/AddData';
 
 function RouterContent(){
     const [menuOpen, setMenuOpen] = useState(false);
@@ -35,16 +36,22 @@ function RouterContent(){
     const apiUrl = process.env.REACT_APP_API_URL;
   
     const checkSession = async () => {
-      const response = await fetch(apiUrl+'/check-session.php', {
-        method: 'GET',
-        credentials: 'include',
-      });
-  
-      const data = await response.json();
-      if (data.user) {
-        setUser(data.user);
+      const cachedUser = localStorage.getItem('user');
+      if (cachedUser) {
+        setUser(JSON.parse(cachedUser));
       } else {
-        setUser(null);
+        const response = await fetch(apiUrl + '/check-session.php', {
+          method: 'GET',
+          credentials: 'include',
+        });
+  
+        const data = await response.json();
+        if (data.user) {
+          setUser(data.user);
+          localStorage.setItem('user', JSON.stringify(data.user)); 
+        } else {
+          setUser(null);
+        }
       }
     };
   
@@ -56,6 +63,7 @@ function RouterContent(){
       handleLoadingFlag(false)
   
       const data = await response.json();
+      localStorage.removeItem('user');
       setUser(null);
       navigate('/login');
     };
@@ -100,6 +108,9 @@ function RouterContent(){
             <Route path="/" element={<HomePage setModalImage={setModalImage}/>}/>
             <Route path="/kontakt" element={<Contact/>}/>
             <Route path="/login" element={<Login loadingFlag={loadingFlag} handleLoadingFlag={handleLoadingFlag} setUser={setUser}/>}/>
+            {user &&
+              <Route path='dodaj-dane' element={<AddData/>}/>
+            }
             {user && user.role === 'admin' && (
                     <Route path="/admin-panel" element={<AdminPanel />} />
                 )}

@@ -31,10 +31,6 @@ function SearchBarForm({ setSearchResults, setShowResults, setResultsLoading }) 
     const apiUrl = process.env.REACT_APP_API_URL;
 
     const handleInputChange = (e, field) => {
-        if(field != 'fullName'){
-            console.log(e.target.value);
-        }
-
         const { value } = e.target;
         setFormData((prevData) => ({
             ...prevData,

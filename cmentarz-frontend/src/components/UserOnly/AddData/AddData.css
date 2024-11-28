@@ -1,0 +1,35 @@
+.grave-data-top-container, .coordinate-container{
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.grave-data-top-container .input-container{
+    justify-self: start;
+    width: auto;
+}
+
+#sector-number{
+    width: 3em;
+    text-align: center;
+}
+
+.grave-id-separator{
+    align-self: flex-end;
+    margin-bottom: 10px;
+}
+
+#grave-number{
+    width: 5em;
+    text-align: center;
+}
+
+
+
+
+
+
+.submit-grave-button{
+    font-size: var(--font-size-medium) !important;
+    font-weight: bold !important;
+}
