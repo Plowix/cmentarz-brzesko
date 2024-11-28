@@ -1,4 +1,4 @@
-import { LayersControl, FeatureGroup, MapContainer, TileLayer } from 'react-leaflet';
+import { LayersControl, FeatureGroup, MapContainer, TileLayer, ImageOverlay } from 'react-leaflet';
 import { useState } from 'react';
 
 import GraveMarker from './GraveMarker';
@@ -8,8 +8,15 @@ import ZoomScaleHandler from './ZoomScaleHandler';
 
 import 'leaflet/dist/leaflet.css';
 
+import overlayImage from './cmentarz.png';
+
 function MapDisplay({graves, selectedGraveID, zoomFlag, setZoomFlag, handleSelectGrave}){
     const [sizeMult, setSizeMult] = useState(1);
+
+    const imageBounds = [
+        [ 49.96984411138697, 20.60509065641739 ],  
+        [ 49.96909459761031, 20.60400034530776 ]
+    ];
 
     return(
         
@@ -27,17 +34,14 @@ function MapDisplay({graves, selectedGraveID, zoomFlag, setZoomFlag, handleSelec
                     maxNativeZoom={19}
                     maxZoom={22}
                 />
-                <GraveZoomHandler
-                    graves={graves}
-                    selectedGraveID={selectedGraveID}
-                    zoomFlag={zoomFlag}
-                    setZoomFlag={setZoomFlag}
-                />
-                <ZoomScaleHandler
-                    setSizeMult={setSizeMult}
-                />
-
                 <LayersControl position="topright">
+                    <LayersControl.Overlay name="Zdjęcie cmentarza" checked={true}>
+                        <ImageOverlay
+                            url={overlayImage}
+                            bounds={imageBounds}
+                            opacity={0.7} 
+                        />
+                    </LayersControl.Overlay>
                     <LayersControl.Overlay name="Groby" checked={false}>
                     <FeatureGroup>
                     {graves.map(function(grave){
@@ -53,7 +57,17 @@ function MapDisplay({graves, selectedGraveID, zoomFlag, setZoomFlag, handleSelec
                     })}
                     </FeatureGroup>
                 </LayersControl.Overlay>
-            </LayersControl>
+                </LayersControl>
+                <GraveZoomHandler
+                    graves={graves}
+                    selectedGraveID={selectedGraveID}
+                    zoomFlag={zoomFlag}
+                    setZoomFlag={setZoomFlag}
+                />
+                <ZoomScaleHandler
+                    setSizeMult={setSizeMult}
+                />
+
             {selectedGraveID !== '0' && <SelectedGraveMarker
                         graves={graves}
                         selectedGraveID={selectedGraveID}

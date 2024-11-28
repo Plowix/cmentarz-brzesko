@@ -76,16 +76,19 @@ class GraveController {
         }
         
         $photoPath = null;
-        
         if (isset($_FILES['image'])) {
             $targetDir = $_SERVER['DOCUMENT_ROOT'] . "/images/graves/";
-    
+
+            if (!file_exists($targetDir)) {
+                mkdir($targetDir, 0777, true);  
+            }
+
             $fileExtension = strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
-    
             $targetFile = $targetDir . str_replace('/', '_', $_POST['graveId']) . ".jpg";
-            
+
             if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFile)) {
                 $photoPath = $targetFile;
+                echo json_encode(['success' => 'Plik został zapisany']);
             } else {
                 echo json_encode(['error' => 'Wystąpił problem przy zapisywaniu pliku']);
             }

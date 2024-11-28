@@ -88,18 +88,18 @@
 .person-info{
     display: flex;
     flex-direction: column;
+    padding: 5px;
 }
 
 .person-info-name{
     font-size: var(--font-size-medium);
     margin: 0px;
 }
-
 i.date-container{
     font-size: var(--font-size-small);
     display: flex;
     justify-content: space-between;
-    width: 50%;
+    width: 100%;
 
     align-self: center;
 }

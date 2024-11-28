@@ -165,7 +165,7 @@ function GraveForm() {
 
     function convertWSG84toPUWG2000(x, y) {
         try {
-            const [lon, lat] = proj4(wgs84, puwg2000, [x, y]);
+            const [lon, lat] = proj4(wgs84, puwg2000, [y, x]);
             return [lat, lon];
         } catch (error) {
             throw new Error("Nie udało się przekształcić współrzędnych: " + error.message);
@@ -250,7 +250,7 @@ function GraveForm() {
         }
     };
     
-
+    console.log(convertPUWG2000toWGS84(7471670.7509354353, 5537057.84626459144));
     return (
         <form className="add-grave-form" onSubmit={(e) => { e.preventDefault(); submitGrave(); }}>
             <h2>Dodaj grób</h2>
