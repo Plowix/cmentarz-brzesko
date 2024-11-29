@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Lis 20, 2024 at 05:30 PM
+-- Generation Time: Lis 29, 2024 at 08:39 AM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `graves` (
   `id` varchar(5) NOT NULL,
-  `photo_path` varchar(255) NOT NULL,
+  `photo_path` varchar(255) DEFAULT NULL,
   `location` point NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -38,11 +38,10 @@ CREATE TABLE `graves` (
 --
 
 INSERT INTO `graves` (`id`, `photo_path`, `location`) VALUES
-('1/001', '/images/graves/grave_1001.jpg', 0x000000000101000000b98d06f016fc48405ad427b9c39a3440),
-('1/002', '/images/graves/grave_1001.jpg', 0x00000000010100000047e6913f18fc484093196f2bbd9a3440),
-('1/003', '/images/graves/grave_1001.jpg', 0x0000000001010000001cebe2361afc48405ad427b9c39a3440),
-('1/004', '/images/graves/grave_1001.jpg', 0x000000000101000000ce1951da1bfc484013286211c39a3440),
-('1/005', '/images/graves/grave_1001.jpg', 0x0000000001010000008048bf7d1dfc4840cc7b9c69c29a3440);
+('1/001', NULL, 0xe61000000101000000402e774811fc4840c40f6245ac9a3440),
+('1/002', NULL, 0xe61000000101000000ce9a43db14fc4840d05fc04fcf9a3440),
+('1/003', NULL, 0xe61000000101000000a36f5d160ffc484013227369c69a3440),
+('1/004', NULL, 0xe61000000101000000c23b57f91efc484007e5c9fbc19a3440);
 
 -- --------------------------------------------------------
 
@@ -53,10 +52,10 @@ INSERT INTO `graves` (`id`, `photo_path`, `location`) VALUES
 CREATE TABLE `persons` (
   `id` int(11) NOT NULL,
   `full_name` varchar(255) NOT NULL,
-  `birth_year` year(4) DEFAULT NULL,
+  `birth_year` int(11) NOT NULL DEFAULT 0,
   `birth_month` tinyint(3) UNSIGNED DEFAULT NULL,
   `birth_day` tinyint(3) UNSIGNED DEFAULT NULL,
-  `death_year` year(4) DEFAULT NULL,
+  `death_year` int(11) NOT NULL DEFAULT 0,
   `death_month` tinyint(3) UNSIGNED DEFAULT NULL,
   `death_day` tinyint(3) UNSIGNED DEFAULT NULL,
   `grave_id` varchar(5) DEFAULT NULL
@@ -67,12 +66,33 @@ CREATE TABLE `persons` (
 --
 
 INSERT INTO `persons` (`id`, `full_name`, `birth_year`, `birth_month`, `birth_day`, `death_year`, `death_month`, `death_day`, `grave_id`) VALUES
-(1, 'Jan Kowalski', '1950', NULL, NULL, '2020', 10, 15, '1/001'),
-(2, 'Anna Nowak', '1965', 5, 22, '2015', NULL, NULL, '1/002'),
-(3, 'Jan Kowalski', '1950', 5, 20, '2020', 3, 15, '1/003'),
-(4, 'Maria Nowak', '1965', 7, 10, '2021', 11, 22, '1/004'),
-(5, 'Piotr Zielinski', '1975', 1, 5, '2022', 6, 30, '1/005'),
-(8, 'Katarzyna Malinowska', '1990', 6, 15, '2022', 2, 20, '1/003');
+(4, 'Anna Stach', 2024, 11, 6, 2024, 6, 3, '1/001'),
+(5, 'Zofia Lis', 2024, 10, 14, 2024, 11, 1, '1/002'),
+(6, 'Jan Kos', 2024, 11, 12, 2024, 11, 1, '1/003'),
+(7, 'Marta Kach', 2024, 9, 10, 2024, 11, 1, '1/004');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` enum('user','admin') DEFAULT 'user',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `role`, `created_at`) VALUES
+(1, 'testuser', '$2b$12$daoNUqXNadI72olWYxmd7.SsYLU4Ya82CVZDau55OnvcUClwcgKwe', 'admin', '2024-11-25 11:08:16'),
+(2, 'uzytkownik_nr_2', '$2y$10$wwYKrtfdloSBLmhjmVs4jObiKCZDScjBQXlKc3rT.TL2v5iVuPol6', 'user', '2024-11-25 11:36:12'),
+(3, 'greg', '$2y$10$dtdx8Wq8P6cveu.3ErzO/.vXpdPEf8qm/vLdM1wIUXZA0319bzBPC', 'user', '2024-11-28 14:07:54');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -92,6 +112,13 @@ ALTER TABLE `persons`
   ADD KEY `grave_id` (`grave_id`);
 
 --
+-- Indeksy dla tabeli `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -99,7 +126,13 @@ ALTER TABLE `persons`
 -- AUTO_INCREMENT for table `persons`
 --
 ALTER TABLE `persons`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

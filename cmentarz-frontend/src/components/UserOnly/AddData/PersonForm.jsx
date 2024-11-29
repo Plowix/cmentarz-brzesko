@@ -30,7 +30,6 @@ function PersonForm({ person, onUpdate, onRemove }) {
                     value={person.birthDay}
                     onChange={handleChange}
                     placeholder='dd'
-                    required
                 />
                 <input
                     type="number"
@@ -39,7 +38,6 @@ function PersonForm({ person, onUpdate, onRemove }) {
                     value={person.birthMonth}
                     onChange={handleChange}
                     placeholder='mm'
-                    required
                 />
                 <input
                     type="number"
@@ -48,7 +46,6 @@ function PersonForm({ person, onUpdate, onRemove }) {
                     value={person.birthYear}
                     onChange={handleChange}
                     placeholder='yyyy'
-                    required
                 />
             </div>
             <div className="death-inputs-container">
@@ -60,7 +57,6 @@ function PersonForm({ person, onUpdate, onRemove }) {
                     value={person.deathDay}
                     onChange={handleChange}
                     placeholder='dd'
-                    required
                 />
                 <input
                     type="number"
@@ -69,7 +65,6 @@ function PersonForm({ person, onUpdate, onRemove }) {
                     value={person.deathMonth}
                     onChange={handleChange}
                     placeholder='mm'
-                    required
                 />
                 <input
                     type="number"
@@ -78,7 +73,6 @@ function PersonForm({ person, onUpdate, onRemove }) {
                     value={person.deathYear}
                     onChange={handleChange}
                     placeholder='yyyy'
-                    required
                 />
             </div>
             </div>
