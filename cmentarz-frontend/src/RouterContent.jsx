@@ -25,6 +25,7 @@ function RouterContent(){
     const navigate = useNavigate();
   
     const closeModal = () => {
+      console.log("Próbuję");
       setModalImage('');
     }
   

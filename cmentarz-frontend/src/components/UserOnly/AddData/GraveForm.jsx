@@ -119,37 +119,42 @@ function GraveForm() {
 
     const apiUrl = process.env.REACT_APP_API_URL;
 
-    const convertImageToJPG = (file) => {
+    const convertImageToJPG = (file, quality = 0.35) => {
         return new Promise((resolve, reject) => {
-            if (file.type === 'image/heic') {
-                heic2any({ blob: file, toType: 'image/jpeg' })
-                    .then((convertedBlob) => {
-                        resolve(convertedBlob);
-                    })
-                    .catch((err) => reject('Błąd konwersji HEIC: ' + err));
-            } else {
-                const reader = new FileReader();
-                reader.onloadend = () => {
-                    const img = new Image();
-                    img.onload = () => {
-                        const canvas = document.createElement('canvas');
-                        const ctx = canvas.getContext('2d');
-                        canvas.width = img.width;
-                        canvas.height = img.height;
-                        ctx.drawImage(img, 0, 0);
-        
-                        canvas.toBlob((blob) => {
-                            resolve(blob);
-                        }, 'image/jpeg'); 
-                    };
-                    img.src = reader.result;
+            const reader = new FileReader();
+    
+            reader.onload = () => {
+                const img = new Image();
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+    
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+    
+                    ctx.drawImage(img, 0, 0);
+    
+                    canvas.toBlob(
+                        (blob) => {
+                            if (blob) {
+                                resolve(new File([blob], file.name.replace(/\.[^/.]+$/, ".jpg"), { type: 'image/jpeg' }));
+                            } else {
+                                reject(new Error('Nie udało się przekonwertować obrazu na JPG.'));
+                            }
+                        },
+                        'image/jpeg',
+                        quality
+                    );
                 };
-
-                reader.onerror = () => reject('Błąd wczytywania obrazu');
-                reader.readAsDataURL(file);
-            }
+                img.onerror = (err) => reject(err);
+                img.src = reader.result;
+            };
+    
+            reader.onerror = (err) => reject(err);
+            reader.readAsDataURL(file);
         });
     };
+    
 
     const puwg2000 = "+proj=tmerc +lat_0=0 +lon_0=21 +k=0.999923 +x_0=7500000 +y_0=0 +ellps=GRS80 +units=m +no_defs";
     const wgs84 = "+proj=longlat +datum=WGS84 +no_defs";
@@ -184,7 +189,7 @@ function GraveForm() {
     
         if (graveData.image) {
             try {
-                const convertedImage = await convertImageToJPG(graveData.image);
+                const convertedImage = await convertImageToJPG(graveData.image, 0.35);
                 const fileName = `${graveId}.jpg`; 
                 formData.append('image', convertedImage, fileName);
             } catch (error) {
@@ -192,6 +197,7 @@ function GraveForm() {
                 return; 
             }
         }
+        
     
         try {
             const graveResponse = await fetch(`${apiUrl}`, {
@@ -307,7 +313,7 @@ function GraveForm() {
                     <input 
                         type="file"
                         id="grave-image" 
-                        accept="image/png, image/jpeg, image/heic"
+                        accept="image/png, image/jpeg"
                         onChange={handleFileChange}
                     />
                 </div>

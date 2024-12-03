@@ -23,12 +23,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
     if (isset($_POST['graveId']) && !isset($_POST['fullName'])) {
-        error_log("Dodawanie grobu");
         GraveController::addGrave();
     }
 
     if (isset($_POST['graveId']) && isset($_POST['fullName'])) {
-        error_log("Dodawanie osoby");
         PersonController::addPerson();
     }
 }

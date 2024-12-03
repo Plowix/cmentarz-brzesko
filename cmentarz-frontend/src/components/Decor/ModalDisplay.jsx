@@ -3,12 +3,11 @@ import './Modal.css';
 import Spinner from './Spinner';
 
 const Modal = ({ modalImage, closeModal }) => {
-    console.log("dziala");
     if (modalImage === '') return null;
 
     return (
     <div className="modal-overlay" onClick={closeModal}>
-        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-overlay-content" onClick={(e) => e.stopPropagation()}>
         <button className="modal-close" onClick={closeModal}>
             ×
         </button>

@@ -30,6 +30,10 @@
     display: flex;
 }
 
+.top-part>div, .top-part>img{
+    margin: 2px;
+}
+
 .grave-information-panel img, .search-result img{
     aspect-ratio: 1/1;
     background-image: url('./placeholder.jpg');
