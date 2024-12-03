@@ -92,7 +92,6 @@ function GraveForm() {
                 return response.json();
             })
             .then((data) => {
-                console.log(data);
                 const location = convertWSG84toPUWG2000(parseFloat(data.location[0]), parseFloat(data.location[1]));
                 setGraveData({
                     sectorNumber: data.id.split('/')[0],
@@ -217,7 +216,6 @@ function GraveForm() {
     };
 
     const submitPeople = async (graveId) => {
-        console.log(peopleData);
         try {
             for (const person of peopleData) {    
                 const birthYear = person.birthYear || 0;
@@ -237,9 +235,7 @@ function GraveForm() {
                 formData.append('deathYear', deathYear);
                 formData.append('deathMonth', deathMonth);
                 formData.append('deathDay', deathDay);
-    
-                console.log("Sending formData:", formData);
-    
+        
                 const response = await fetch(`${apiUrl}`, {
                     method: 'POST',
                     body: formData,
@@ -256,7 +252,6 @@ function GraveForm() {
         }
     };
     
-    console.log(convertPUWG2000toWGS84(7471670.7509354353, 5537057.84626459144));
     return (
         <form className="add-grave-form" onSubmit={(e) => { e.preventDefault(); submitGrave(); }}>
             <h2>Dodaj grób</h2>

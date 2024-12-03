@@ -9,6 +9,7 @@
 
 .modal-image.src-not-found:hover{
   cursor: default !important;
+  filter: brightness(100%) !important;
 }
 
 

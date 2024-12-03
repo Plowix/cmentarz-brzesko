@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import MapSearchBar from "./SearchBar/MapSearchBar";
 import MapContainer from "./Map/MapContainer";
@@ -11,6 +11,7 @@ function HomePage({user, setModalImage}){
     const [zoomFlag, setZoomFlag] = useState(false); //jeżeli true to mapa zoomuje do wybranego grobu
 
     const apiUrl = process.env.REACT_APP_API_URL
+    const mapContainerRef = useRef(null);
     
     useEffect(() => {
         fetch(apiUrl+"/?grave_coords")
@@ -27,11 +28,16 @@ function HomePage({user, setModalImage}){
     function handleSelectGrave(newSelectedID){
         setSelectedGraveID(newSelectedID);
         setZoomFlag(true);
+
+        if (mapContainerRef.current) {
+            mapContainerRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     }
 
     return(
         <main>
             <MapSearchBar handleSelectGrave={handleSelectGrave} />
+            <div ref={mapContainerRef} className='map-container'>
             <MapContainer 
                 user={user}
                 graves={graves} 
@@ -41,6 +47,7 @@ function HomePage({user, setModalImage}){
                 setZoomFlag={setZoomFlag}
                 setModalImage={setModalImage}
             />
+            </div>
         </main>
     )
 }

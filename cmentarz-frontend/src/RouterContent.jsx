@@ -25,7 +25,6 @@ function RouterContent(){
     const navigate = useNavigate();
   
     const closeModal = () => {
-      console.log("Próbuję");
       setModalImage('');
     }
   
@@ -37,24 +36,43 @@ function RouterContent(){
     const apiUrl = process.env.REACT_APP_API_URL;
   
     const checkSession = async () => {
-      const cachedUser = localStorage.getItem('user');
+      const cachedUser = sessionStorage.getItem('user');
       if (cachedUser) {
-        setUser(JSON.parse(cachedUser));
+        setUser(JSON.parse(cachedUser)); 
+        verifySessionInBackground();
       } else {
-        const response = await fetch(apiUrl + '/check-session.php', {
-          method: 'GET',
-          credentials: 'include',
-        });
-  
-        const data = await response.json();
-        if (data.user) {
-          setUser(data.user);
-          localStorage.setItem('user', JSON.stringify(data.user)); 
-        } else {
-          setUser(null);
-        }
+        await verifySessionFromBackend(); 
       }
     };
+    
+    const verifySessionInBackground = async () => {
+      const response = await fetch(apiUrl + '/check-session.php', {
+        method: 'GET',
+        credentials: 'include',
+      });
+    
+      const data = await response.json();
+      if (!data.user) {
+        setUser(null); 
+        sessionStorage.removeItem('user');
+      }
+    };
+    
+    const verifySessionFromBackend = async () => {
+      const response = await fetch(apiUrl + '/check-session.php', {
+        method: 'GET',
+        credentials: 'include',
+      });
+    
+      const data = await response.json();
+      if (data.user) {
+        setUser(data.user);
+        sessionStorage.setItem('user', JSON.stringify(data.user)); // Zapisz cache
+      } else {
+        setUser(null);
+      }
+    };
+    
   
     const logout = async () => {
       const response = await fetch(apiUrl+'/logout.php', {
@@ -109,12 +127,9 @@ function RouterContent(){
             <Route path="/" element={<HomePage user={user} setModalImage={setModalImage}/>}/>
             <Route path="/kontakt" element={<Contact/>}/>
             <Route path="/login" element={<Login loadingFlag={loadingFlag} handleLoadingFlag={handleLoadingFlag} setUser={setUser}/>}/>
-            {user &&
-              <Route path='dodaj-dane' element={<AddData/>}/>
-            }
-            {user && user.role === 'admin' && (
-                    <Route path="/admin-panel" element={<AdminPanel />} />
-                )}
+
+            <Route path='dodaj-dane' element={user ? <AddData/> : <Login loadingFlag={loadingFlag} handleLoadingFlag={handleLoadingFlag} setUser={setUser}/>}/>
+            <Route path="/admin-panel" element={user && user.role==='admin' ? <AdminPanel /> : <Login loadingFlag={loadingFlag} handleLoadingFlag={handleLoadingFlag} setUser={setUser}/>} />
           </Routes>
           <Footer/>
           </>

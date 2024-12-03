@@ -14,7 +14,6 @@ const ContactForm = () => {
             return;
         }
 
-        console.log({ email, subject, message });
         setError('');
     };
 

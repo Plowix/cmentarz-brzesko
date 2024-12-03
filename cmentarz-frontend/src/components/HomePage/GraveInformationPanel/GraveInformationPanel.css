@@ -36,7 +36,7 @@
 
 .grave-information-panel img, .search-result img{
     aspect-ratio: 1/1;
-    background-image: url('./placeholder.jpg');
+    background-color: var(--bg-color);
     background-size: 100%;
     object-fit: cover;
     object-position: center;

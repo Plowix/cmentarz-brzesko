@@ -3,7 +3,6 @@ import SearchResult from './SearchResult';
 
 function ResultBox({searchResults, handleResultClick, setShowResults, resultsLoading}){
     const handleCloseButtonClick = () =>{
-        console.log(searchResults);
         setShowResults(false);
     }
 
@@ -19,7 +18,7 @@ function ResultBox({searchResults, handleResultClick, setShowResults, resultsLoa
             {resultsLoading ? <Spinner/> :
             searchResults.length > 0 ?
                     searchResults.map((person, index) => (
-                        <SearchResult personData={person} handleResultClick={handleResultClick}/>
+                        <SearchResult key={index} personData={person} handleResultClick={handleResultClick}/>
                     ))
                 : <p>Brak wyników dla podanych kryteriów</p>}
             </div>

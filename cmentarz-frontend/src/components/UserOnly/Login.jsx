@@ -12,9 +12,7 @@ const Login = ({loadingFlag, handleLoadingFlag}) => {
     const handleLogin = async (e) => {
         handleLoadingFlag(true);
         e.preventDefault();
-    
-        console.log('Dane logowania:', { username, password });
-    
+        
         const response = await fetch(`${apiUrl}/login.php`, {
             method: 'POST',
             headers: {
@@ -30,18 +28,15 @@ const Login = ({loadingFlag, handleLoadingFlag}) => {
         handleLoadingFlag(false);
     
         const text = await response.text();
-        console.log('Odpowiedź serwera:', text);
     
         try {
             const data = JSON.parse(text);  
             if (data.user) {
-                console.log('Zalogowano pomyślnie', data.user);
                 window.location.href = '/'; 
             } else {
                 setError(data.error || 'Nieznany błąd');
             }
         } catch (error) {
-            console.error('Błąd przy parsowaniu JSON:', error);
             setError('Błąd odpowiedzi serwera');
         }
     };

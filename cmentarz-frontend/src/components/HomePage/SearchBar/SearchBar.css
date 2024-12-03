@@ -128,6 +128,8 @@ input[type=number] {
     height: 300px;
     width: 200px;
 
+    flex-shrink: 0;
+
     padding-bottom: 10px;
     border: 1px solid var(--text-secondary-color);
 
@@ -151,6 +153,21 @@ input[type=number] {
     min-width: 200px;
     width: 100%;
     border: 1px solid var(--text-secondary-color);
+}
+
+.image-wrapper{
+    position: relative;
+}
+
+.image-wrapper .lds-ring{
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+
+    color: white;
+
+    z-index: 100;
 }
 
 .search-result h5{

@@ -4,7 +4,7 @@ import MapDisplay from './MapDisplay';
     
 function Map({user, graves, selectedGraveID, handleSelectGrave, zoomFlag, setZoomFlag, setModalImage}){
     return(
-        <div className="map-container">
+        <>
             <MapDisplay
                 graves={graves}
                 selectedGraveID={selectedGraveID}
@@ -14,7 +14,7 @@ function Map({user, graves, selectedGraveID, handleSelectGrave, zoomFlag, setZoo
             />
 
             {selectedGraveID === "0" ? <GraveInfoEmpty/> : <GraveInfo user={user} setModalImage={setModalImage} selectedGraveId={selectedGraveID} setZoomFlag={setZoomFlag}/>}
-        </div>
+        </>
     )
 }
 
