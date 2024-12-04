@@ -163,6 +163,7 @@ img{
 
     .navbar a, .navbar button{
         width: 100%;
+        text-align: left;
     }
 
     .navbar.open{
