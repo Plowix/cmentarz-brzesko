@@ -1,7 +1,12 @@
+import './Footer.css'
+
 function Footer(){
     return(
         <footer>
-            <p>stopka</p>
+            <div className="footer-contact-information">
+                <b>Kontakt:</b>
+                <a href="https://jakub.bwi.pl/">Strona parafii</a>
+            </div>
         </footer>
     )
 }

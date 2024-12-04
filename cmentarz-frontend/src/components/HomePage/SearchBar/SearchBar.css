@@ -187,7 +187,7 @@ input[type=number] {
     margin: 0px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
     .birth-date-inputs h3, .death-date-inputs h3{
         min-width: 120px;
         font-size: var(--font-size-small);    

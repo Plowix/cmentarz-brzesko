@@ -13,6 +13,8 @@ import './GraveInformationPanel.css';
 function GraveInfo({user, selectedGraveId, setModalImage, setZoomFlag}){
     const [graveData, setGraveData] = useState({});
     const [isLoading, setIsLoading] = useState(true)
+    
+    const [imageError, setImageError] = useState(false); 
 
     const apiUrl = process.env.REACT_APP_API_URL
     
@@ -58,9 +60,9 @@ function GraveInfo({user, selectedGraveId, setModalImage, setZoomFlag}){
             <div className="bottom-info-container">
             <h2 className="grave-people-header"><FontAwesomeIcon icon={faCross}/> Pochowani:</h2>
             <div className="people-container">
-                {graveData['people'] ? 
+                {graveData['people'].length !== 0 ? 
                 graveData['people'].map(function(data){return(<PersonInfo key={data.full_name} personData={data}/>)}) :
-                ""}
+                "Brak informaji o osobach pochowanych"}
             </div>
             </div>
             </>

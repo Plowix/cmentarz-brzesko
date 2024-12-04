@@ -1,0 +1,14 @@
+footer{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    
+    padding: 10px;
+
+    border-top: 1px solid var(--text-secondary-color);
+}
+
+.footer-contact-information{
+    display: flex;
+    flex-direction: column;
+}

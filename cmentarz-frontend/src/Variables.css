@@ -6,13 +6,13 @@
     --text-color: var(--text-color-dark);
     --text-secondary-color: var(--text-secondary-color-dark);
 
-    --text-color-light: #000000;
-    --text-secondary-color-light: #2e2e2e;
+    --text-color-light: #181818;
+    --text-secondary-color-light: #3f3f3f;
     --bg-color-light: #e7e7e7;
     --bg-secondary-color-light: #f1f1f1;
 
-    --text-color-dark: #ffffff;
-    --text-secondary-color-dark: #cfcfcf;
+    --text-color-dark: #ebebeb;
+    --text-secondary-color-dark: #dbdbdb;
     --bg-color-dark: rgb(34, 34, 34);
     --bg-secondary-color-dark: rgb(61, 61, 61);
 

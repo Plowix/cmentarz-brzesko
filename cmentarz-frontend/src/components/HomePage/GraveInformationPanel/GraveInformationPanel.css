@@ -34,7 +34,7 @@
     margin: 2px;
 }
 
-.grave-information-panel img, .search-result img{
+.grave-information-panel .modal-image-wrapper, .search-result img{
     aspect-ratio: 1/1;
     background-color: var(--bg-color);
     background-size: 100%;
@@ -43,12 +43,13 @@
     font-size: 0px;
 }
 
+
+
 .grave-information-panel .bottom-info-container{
     width: 100%;
 }
 .grave-information-panel img{
-    flex: 1;
-    width: 50%;
+    object-fit: cover;
 
     border: 1px solid var(--text-secondary-color);
 }
@@ -59,7 +60,7 @@
     justify-content: space-between;
     align-items: center;
 
-    min-width: 130px;
+    min-width: 50%;
 }
 
 .location-box{
@@ -81,41 +82,73 @@
 
 .people-container{
     width: 100%;
-    display: grid;
-    grid-template-columns: 50% 50%;
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
 
-    gap: 0;
-    border-collapse: collapse;
+    margin-bottom: .5rem;
+}
+
+.person-info:first-child{
+    border-top: none;
+}
+
+.person-info{
+    border-top: 1px solid gray;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .person-info{
     display: flex;
     flex-direction: column;
-    padding: 5px;
-}
+    align-items: center;
+
+    gap: 5px;
+
+    margin-bottom: 5px;
+ }
 
 .person-info-name{
     font-size: var(--font-size-medium);
     margin: 0px;
 }
-i.date-container{
-    font-size: var(--font-size-small);
+
+.person-info-dates{
     display: flex;
     justify-content: space-between;
     width: 100%;
+}
+
+i.date-container{
+    font-size: var(--font-size-small);
+    display: flex;
+    width: 50%;
+
+    justify-content: space-between;
 
     align-self: center;
+    padding: 0px 5px;
+}
+
+i.date-container:first-child{
+    border-right: 1px solid var(--text-secondary-color);
+}
+
+.admin-panel-container{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .admin-panel-container button{
     background: none;
     border: none;
+    color: var(--text-color);
 
     margin: 5px;
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 700px) {
     .grave-information-panel .top-part{
         border-bottom: 1px solid var(--text-secondary-color);
     }
@@ -125,7 +158,7 @@ i.date-container{
     }
   }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
     .grave-information-panel .top-part{
         border-top: 1px solid var(--text-secondary-color);
     }

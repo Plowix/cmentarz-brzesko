@@ -34,14 +34,13 @@ function MapDisplay({graves, selectedGraveID, zoomFlag, setZoomFlag, handleSelec
                     maxNativeZoom={19}
                     maxZoom={22}
                 />
-                <LayersControl position="topright">
-                    <LayersControl.Overlay name="Zdjęcie cmentarza" checked={true}>
-                        <ImageOverlay
+                <ImageOverlay
                             url={overlayImage}
                             bounds={imageBounds}
                             opacity={0.7} 
                         />
-                    </LayersControl.Overlay>
+                <LayersControl position="topright">
+                        
                     <LayersControl.Overlay name="Groby" checked={false}>
                     <FeatureGroup>
                     {graves.map(function(grave){

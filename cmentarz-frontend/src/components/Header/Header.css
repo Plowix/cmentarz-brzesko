@@ -52,7 +52,7 @@ button.theme-toggle svg{
     font-size: var(--font-size-medium);
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
     .top-bar{
         padding: 10px;
     }

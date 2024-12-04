@@ -74,8 +74,8 @@ main{
     width: 1200px;
     max-width: 100%;
 
-    padding: 20px;
     text-align: center;
+    padding: 20px;
 
 }
 
@@ -145,13 +145,17 @@ input:hover, textarea:hover{
     box-shadow: none !important;
 }
 
-@media only screen and (min-width: 600px) {
+img{
+    font-size: 0px;
+}
+
+@media only screen and (min-width: 700px) {
     .burger-menu{
         display: none;
     }
   }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
     .navbar{
         display: none;
         
