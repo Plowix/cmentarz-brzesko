@@ -24,7 +24,6 @@ function ModalImage({ imageUrl, setModalImage, altText }) {
         <img
             className={`modal-image ${isError ? "src-not-found" : ""}`} 
             src={imageUrl}
-            alt={altText || "Image"}
             onClick={isError ? null : () => setModalImage(imageUrl)} 
             onLoad={handleImageLoad}
             onError={handleImageError}

@@ -12,6 +12,7 @@ function GraveForm() {
     const navigate = useNavigate();
 
     const [editGraveID, setEditGraveId] = useState('0');
+    const [responseText, setResponseText] = useState('');
 
     const [graveData, setGraveData] = useState({
         sectorNumber: '',
@@ -214,6 +215,9 @@ function GraveForm() {
                 body: formData,
                 credentials: 'include',
             });
+
+            console.log(graveResponse);
+
     
             if (!graveResponse.ok) {
                 throw new Error("Błąd podczas wysyłania danych grobu");
@@ -252,12 +256,12 @@ function GraveForm() {
                     body: formData,
                     credentials: 'include'
                 });
+
     
                 if (!response.ok) {
                     throw new Error('Błąd podczas wysyłania danych osoby');
                 }
             }
-            navigate(`/`);
         } catch (error) {
             console.error('Error while submitting people data:', error);
         }
