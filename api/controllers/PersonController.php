@@ -21,8 +21,7 @@ class PersonController {
                     persons.death_year, 
                     persons.death_month, 
                     persons.death_day, 
-                    persons.grave_id, 
-                    graves.photo_path 
+                    persons.grave_id
                 FROM 
                     persons 
                 LEFT JOIN 
@@ -86,7 +85,6 @@ class PersonController {
                         'birth_date' => getPersonDate($row, true),
                         'death_date' => getPersonDate($row, false),
                         'grave_id' => $row['grave_id'],
-                        'photo_path' => $row['photo_path']
                     ];
                 }
 

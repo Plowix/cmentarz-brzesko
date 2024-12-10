@@ -14,8 +14,10 @@ function GraveEditPanel({graveID}){
                 credentials: 'include'
             });    
 
+            console.log(response.json());
+
             if (response.ok) {
-                window.location.reload();
+                window.location.href = window.location.origin + window.location.pathname;
             }
         } catch (error) {
             console.error(error);
