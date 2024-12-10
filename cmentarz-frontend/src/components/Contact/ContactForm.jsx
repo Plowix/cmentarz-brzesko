@@ -6,16 +6,44 @@ const ContactForm = () => {
     const [message, setMessage] = useState('');
     const [error, setError] = useState('');
 
-    const handleSubmit = (e) => {
+    const apiUrl = process.env.REACT_APP_API_URL;
+    const handleSubmit = async (e) => {
         e.preventDefault();
-
+    
         if (!email || !subject || !message) {
             setError('Proszę wypełnić wszystkie pola.');
             return;
         }
-
-        setError('');
+    
+        try {
+            const response = await fetch(apiUrl+'/mail.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({
+                    email,
+                    subject,
+                    message,
+                }),
+            });
+    
+            const result = await response.json();
+    
+            if (result.status === "success") {
+                alert(result.message);
+                setEmail('');
+                setSubject('');
+                setMessage('');
+                setError('');
+            } else {
+                setError(result.message || 'Wystąpił błąd.');
+            }
+        } catch (error) {
+            setError('Nie udało się wysłać wiadomości. Spróbuj ponownie później.');
+        }
     };
+    
 
     return (
         <form className='contact-container' onSubmit={handleSubmit}>

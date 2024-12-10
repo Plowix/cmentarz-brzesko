@@ -25,7 +25,6 @@ class GraveController {
         $conn = getDatabaseConnection();
         $graveData = [
             "id" => "",
-            "photo_path" => "",
             "people" => []
         ];
 

@@ -1,5 +1,6 @@
 import { LayersControl, FeatureGroup, MapContainer, TileLayer, ImageOverlay } from 'react-leaflet';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import GraveMarker from './GraveMarker';
 import SelectedGraveMarker from './SelectedGraveMarker'

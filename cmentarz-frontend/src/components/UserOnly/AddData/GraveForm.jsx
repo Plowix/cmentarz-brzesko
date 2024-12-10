@@ -224,6 +224,8 @@ function GraveForm() {
             }
     
             await submitPeople(graveId);
+
+            navigate('/?id='+encodeURIComponent(graveId));
         } catch (error) {
             console.error("Error while submitting grave data:", error);
         }

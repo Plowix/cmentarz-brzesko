@@ -12,3 +12,8 @@ footer{
     display: flex;
     flex-direction: column;
 }
+
+footer a{
+    color: var(--text-secondary-color);
+    text-decoration: none;
+}
