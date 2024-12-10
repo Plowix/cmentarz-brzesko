@@ -11,26 +11,11 @@ if ($environment === 'production') {
 } else {
     header('Access-Control-Allow-Origin: http://localhost:3000');
 }
-header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+header('Access-Control-Allow-Methods: POST, GET, PUT, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, Authorization');
 header('Access-Control-Allow-Credentials: true'); 
 
-session_start();
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (!isset($_SESSION['user'])) {
-        echo json_encode(['error' => 'Brak uprawnień']);
-        exit;
-    }
-    if (isset($_POST['graveId']) && !isset($_POST['fullName'])) {
-        GraveController::addGrave();
-    }
-
-    if (isset($_POST['graveId']) && isset($_POST['fullName'])) {
-        PersonController::addPerson();
-    }
-}
-else if (isset($_GET["grave_coords"])) {
+if (isset($_GET["grave_coords"])) {
     GraveController::getAllGraveCoordinates();
 } else if (isset($_GET["grave_id"])) {
     $graveID = $_GET["grave_id"];
@@ -53,7 +38,7 @@ else if (isset($_GET["grave_coords"])) {
     GraveController::deleteGrave($graveId);
 } 
 else {
-    echo json_encode(['error' => 'Błędna próba połączenia z PHP']);
+    echo json_encode(['error' => 'Błędna próba połączenia z PHP'.$_SERVER['REQUEST_METHOD']]);
     error_log('Invalid request: ' . json_encode($_GET)); 
 }
 ?>

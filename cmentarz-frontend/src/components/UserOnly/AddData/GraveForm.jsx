@@ -210,13 +210,13 @@ function GraveForm() {
         }
     
         try {
-            const graveResponse = await fetch(`${apiUrl}`, {
+            const graveResponse = await fetch(`${apiUrl}/post.php`, {
                 method: 'POST',
                 body: formData,
                 credentials: 'include',
             });
 
-            console.log(graveResponse);
+            setResponseText(await graveResponse.json());
 
     
             if (!graveResponse.ok) {
@@ -251,7 +251,7 @@ function GraveForm() {
                 formData.append('deathMonth', deathMonth);
                 formData.append('deathDay', deathDay);
         
-                const response = await fetch(`${apiUrl}`, {
+                const response = await fetch(`${apiUrl}/post.php`, {
                     method: 'POST',
                     body: formData,
                     credentials: 'include'
@@ -354,6 +354,14 @@ function GraveForm() {
             <button className='btn btn-outline-secondary submit-grave-button'>
                 {editGraveID === '0' ? "Dodaj grób" : "Edytuj grób"}
             </button>
+
+            <div>
+                {Object.entries(responseText).map(([key, message], index) => (
+                        <div key={index} className={key}>
+                            {message}
+                        </div>
+                    ))}
+            </div>
         </form>
     );
 }

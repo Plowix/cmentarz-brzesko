@@ -63,6 +63,8 @@ class GraveController {
         $graveId = $_POST['graveId'];
         $xCoord = $_POST['xCoord'];
         $yCoord = $_POST['yCoord'];
+        
+        error_log($graveId.' '.$xCoord.' '.$yCoord);
 
         $deletePersonsQuery = "DELETE FROM persons WHERE grave_id = ?";
         if ($deleteStmt = $conn->prepare($deletePersonsQuery)) {
@@ -87,14 +89,10 @@ class GraveController {
             $targetFile = $targetDir . str_replace('/', '_', $_POST['graveId']) . ".jpg";
 
             if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFile)) {
+                error_log("Dodano poprawnie obrazek");
                 $photoPath = $targetFile;
-                echo json_encode(['success' => 'Plik został zapisany']);
-            } else {
-                echo json_encode(['error' => 'Wystąpił problem przy zapisywaniu pliku']);
             }
-        } else {
-            echo json_encode(['error' => 'Brak pliku do załadowania']);
-        }
+        } 
     
         $location = "POINT($xCoord $yCoord)";
     
