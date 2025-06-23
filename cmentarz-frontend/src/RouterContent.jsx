@@ -5,6 +5,7 @@ import ModalDisplay from './components/Decor/ModalDisplay';
 import Header from './components/Header/Header'
 import HomePage from './components/HomePage/HomePage';
 import Contact from './components/Contact/Contact';
+import History from './components/History/History';
 import Footer from './components/Footer';
 import Login from './components/UserOnly/Login';
 import AdminPanel from './components/UserOnly/AdminPanel';
@@ -107,6 +108,7 @@ function RouterContent(){
             <div className={`navbar ${menuOpen ? "open" : ""}`}>
               <Link to="/" onClick={toggleMenu}>Mapa</Link>
               <Link to="/kontakt" onClick={toggleMenu}>Kontakt</Link>
+              <Link to="/historia" onClick={toggleMenu}>Historia</Link>
               {user && (
                 <>
                   <Link to="/dodaj-dane" onClick={toggleMenu}>Dodaj dane</Link>
@@ -126,6 +128,7 @@ function RouterContent(){
           <Routes>
             <Route path="/" element={<HomePage user={user} setModalImage={setModalImage}/>}/>
             <Route path="/kontakt" element={<Contact/>}/>
+            <Route path="/historia" element={<History/>}/>
             <Route path="/login" element={<Login loadingFlag={loadingFlag} handleLoadingFlag={handleLoadingFlag} setUser={setUser}/>}/>
 
             <Route path='dodaj-dane' element={user ? <AddData/> : <Login loadingFlag={loadingFlag} handleLoadingFlag={handleLoadingFlag} setUser={setUser}/>}/>

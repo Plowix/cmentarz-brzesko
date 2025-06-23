@@ -1,5 +1,5 @@
 :root{
-    --primary-color: #a7862e;
+    --primary-color: #91762c;
 
     --bg-color: var(--bg-color-dark);
     --bg-secondary-color: var(--bg-secondary-color-dark);
@@ -11,8 +11,8 @@
     --bg-color-light: #e7e7e7;
     --bg-secondary-color-light: #f1f1f1;
 
-    --text-color-dark: #ebebeb;
-    --text-secondary-color-dark: #dbdbdb;
+    --text-color-dark: #dddddd;
+    --text-secondary-color-dark: #cacaca;
     --bg-color-dark: rgb(34, 34, 34);
     --bg-secondary-color-dark: rgb(61, 61, 61);
 

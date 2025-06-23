@@ -1,0 +1,22 @@
+.history-entry{
+    text-align: left;
+    border-top: 1px solid var(--text-secondary-color);
+    padding-top: 15px;
+
+    width: 100%;
+}
+
+.history-entry button, h2{
+    display: inline;
+}
+
+.history-entry button{
+    vertical-align: top;
+    margin-left: 5px;
+    padding: 7px 11px;
+}
+
+.history-entry:first-child{
+    border-top: none;
+    padding-top: 0;
+}
