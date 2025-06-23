@@ -14,7 +14,7 @@ function SearchResult({ personData, handleResultClick }) {
         setIsLoading(false); 
     };
 
-    const imageUrl = `${process.env.REACT_APP_URL}/images/graves/${personData.grave_id.replace("/", "_")}.jpg`;
+    const imageUrl = `${process.env.REACT_APP_URL}/zdjecia/groby/${personData.grave_id.replace("/", "_")}.jpg`;
 
     return (
         <div

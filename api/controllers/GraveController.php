@@ -63,7 +63,6 @@ class GraveController {
         $xCoord = $_POST['xCoord'];
         $yCoord = $_POST['yCoord'];
         
-        error_log($graveId.' '.$xCoord.' '.$yCoord);
 
         $deletePersonsQuery = "DELETE FROM persons WHERE grave_id = ?";
         if ($deleteStmt = $conn->prepare($deletePersonsQuery)) {
@@ -78,7 +77,7 @@ class GraveController {
         
         $photoPath = null;
         if (isset($_FILES['image'])) {
-            $targetDir = $_SERVER['DOCUMENT_ROOT'] . "/images/graves/";
+            $targetDir = $_SERVER['DOCUMENT_ROOT'] . "/zdjecia/groby/";
 
             if (!file_exists($targetDir)) {
                 mkdir($targetDir, 0777, true);  
@@ -120,7 +119,7 @@ class GraveController {
                     $insertStmt->bind_param("ss", $graveId, $location);
                     
                     if ($insertStmt->execute()) {
-                        echo json_encode(['success' => 'Grób został pomyślnie dodany']);
+                        echo json_encode(['success' => 'Grób został pomyślnie dodany '.$location." ".$xCoord." ".$yCoord]);
                     } else {
                         echo json_encode(['error' => 'Błąd dodawania grobu']);
                     }

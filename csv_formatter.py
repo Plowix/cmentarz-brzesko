@@ -37,17 +37,36 @@ def process_date(date_str):
         # Jeśli wszystko inne zawiedzie
         return "00", "00", "0000"
 
-df = pd.read_csv(sys.argv[1])
+df = pd.read_csv(sys.argv[1], dtype={'grave_id': str})
+df = df.applymap(lambda x: x.strip() if isinstance(x, str) else x)
 
-df = df[~df['first_name'].isin(["Nieznany", "DO WYPEŁNIENIA"])]
+df['grave_id'] = df['grave_id'].fillna(method='ffill')
 
-df['full_name'] = df['first_name'].fillna('') + " " + df['last_name'].fillna('')
+df['grave_id'] = df['grave_id'].astype(str).str.replace('.0', '', regex=False)
+
+def build_full_name(row):
+    first = row['first_name']
+    last = row['last_name']
+    
+    if pd.isna(first) or first.lower() == "nieznany" or first.lower() == "nieznane" or first.lower() == "nieznana":
+        return str(last).strip() if not pd.isna(last) else ''
+    elif pd.isna(last) or last.lower() == "nieznany" or last.lower() == "nieznane":
+        return str(first).strip() if not pd.isna(first) else ''
+    else:
+        return f"{first} {last}".strip()
+
+df['full_name'] = df.apply(build_full_name, axis=1)
+
+# Usuń wiersze z pustym full_name
+df = df[df['full_name'].str.strip() != '']
+
+
 df['birth_day'], df['birth_month'], df['birth_year'] = zip(*df['birth_date'].map(process_date))
 df['death_day'], df['death_month'], df['death_year'] = zip(*df['death_date'].map(process_date))
 
 df.drop(columns=['first_name', 'last_name', 'birth_date', 'death_date'], inplace=True)
 
-
 df.to_csv("output.csv", index=False)
 
 print(df)
+

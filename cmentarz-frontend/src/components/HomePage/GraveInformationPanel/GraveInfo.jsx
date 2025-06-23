@@ -38,7 +38,7 @@ function GraveInfo({user, selectedGraveId, setModalImage, setZoomFlag}){
             {user && <GraveEditPanel graveID={graveData.id}/>}
             <div className="top-part">
             <ModalImage
-                imageUrl={process.env.REACT_APP_URL+"/images/graves/"+(graveData.id.replace("/", "_"))+".jpg"}
+                imageUrl={process.env.REACT_APP_URL+"/zdjecia/groby/"+(graveData.id.replace("/", "_"))+".jpg"}
                 setModalImage={setModalImage}
                 altText={"Zdjęcie grobu"}
                 />

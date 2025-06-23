@@ -1,0 +1,354 @@
+grave_id,first_name,last_name,birth_date,death_date
+1,Bronisława,Rybicka,01.09.1885,7/22/1965
+,Stanisław,Czamarski,20.02.1856,7/7/1934
+2,Maria,Korman,29.09.1882,7/3/1969
+,Zygmunt,Korman,10/29/1914,6/2/1987
+,Emilia,Korman,1/14/1928,4/6/2019
+3,Helena,Dudek,Nieznana,Nieznana
+,Michał,Dudek,Nieznana,Nieznana
+4,Józef,Chomek,6/3/1927,6/2/2023
+5,Jaś,Wawrykiewicz,5/27/1941,4/16/1943
+,Jan,Wawrykiewicz,11/20/1902,8/4/1972
+,Zofia,Wawrykiewicz,4/5/1904,11/30/1978
+6,Nieznany,,,
+7,Stanisława,Kaczmarowska,04.04.1881,3/19/1969
+,Marcin,Kaczmwski,12.11.1878,11/11/1955
+,Janina,Kaczmarowska,5/24/1914,10/15/2017
+8,Anna,Dubiel,1905 r.,3/4/1932
+,Stanisław,Dubiel,1898 r.,1/4/1944
+9,Maria,Jaworska,Nieznana,Nieznana
+,Kazimierz,Jaworski,Nieznana,Nieznana
+,Genowefa,Jaworska,Nieznana,Nieznana
+,Albin,Jaworski,Nieznana,Nieznana
+10,Katarzyna,Wilczyńska,24.12.1851,9/11/1931
+,Agata,Maderska,1848 r.,8/15/1932
+,Helena,Syweńki,18.08.1899,12/27/1968
+,Paweł,Syweńki,12.07.1885,6/17/1968
+,Jan,Jaworski,02.2.1874,11/21/1939
+,Jan,Jaworski,1859 r.,3/8/1925
+11,Piotr,Marzec,6/4/1956,1/24/1965
+,Stefan,Marzec,7/24/1925,1/6/2020
+,Zofia,Marzec,3/16/1932,2/1/2020
+12,Bronisława,Marzec,10/18/1901,3/7/1969
+,Michał,Marzec,14.09.1894,1/1/1947
+,Henryk,Zgraja,7/16/1912,6/15/1991
+,Władysław,Zgraja,4/3/1904,6/14/1974
+13,Anna,Smoczyńska,Nieznana,Nieznana
+14,Genowefa,Cabała,11/19/1903,6/14/1988
+,Barbara,Lendowa,Nieznana,Nieznana
+,Meczysław,Lendowy,Nieznana,Nieznana
+,Wiktoria,Ciecieręga,Nieznana,Nieznana
+,Jadwiga,Ciecieręga,Nieznana,Nieznana
+,Eugenia,Dziobowa,18.10.1887,5/30/1939
+,Jan,Dziob,30.12.1885,1/28/1967
+,Jan,Dziob,4/25/1912,8/2/1980
+15,Nieznany,,,
+16,Maria,Hołysz,4/21/1930,3/12/2005
+,Stanisław,Hołysz,7/26/1933,3/5/2010
+,Elżbieta,Gaczyńska,29.10.1892,12/25/1978
+,Józef,Gaczyński,25.07.1894,4/29/1972
+17,Anna,Habryłowa,02.02.1866,11/25/1905
+,Wojciech,Habryło,04.04.1861,10/15/1931
+18,Nieznany,Nowak,Nieznana,Nieznana
+19,Józef,Śliwa,1921 r.,1977 r.
+,Bronisława,Zielińska,1921 r.,2006 r.
+,Jan,Stankowski,11.09.1886,10/24/1972
+,Maria,Stankowska,09.08.1892,4/26/1977
+20,Adam,Kachnikiewicz,Nieznana,kwi 1948r.
+,Wojciech,Jachimecki,Nieznana,Nieznana
+21,Nieznany,Zielińska,Nieznana,Nieznana
+22,Nieznany,"Bernacki, Kubala",Nieznana,Nieznana
+23,Helena,Gasinsc,2/19/1901,2/10/1934
+,Michał,Gasinsc,22.09.1894,UZUPEŁNIĆ
+24,Stanisław,Korman,10.06.1880,11/15/1945
+25,Stanisław,Kogutowicz,Nieznana,8/28/1941
+26,Teofil,Kowalski,Nieznana,Nieznana
+27,Ignacy,Kubasiewicz,Nieznana,15.10.1881
+28,Nieznany,,,
+29,Paweł,Wieczorek,07.07.1883,10/4/1964
+30,Jan,Głąb,1887 r.,1917 r.
+31,Albin,Pietrusiński,09.02.1878,8/30/1944
+,Władysław,Pietrusiński,10.06.1874,7/7/1949
+,Antoni,Pietrusiński,5/17/1923,2/28/2007
+32,Karolina,Stec,12/20/1902,2/5/1971
+,Stanisław,Stec,26.03.1889,7/1/1964
+33,Franciszek,Kostrzewa,9/30/1928,3/5/2024
+,Stanisław,Kostrzewa,1900 r.,1953 r.
+,Maria,Kostrzewa,1896 r.,1963 r.
+,Waleria,Szot,1863 r.,1952 r.
+,Jan,Szot,Nieznana,1900 r.
+34,Waldemar,Rugienis,3/31/1927,1/25/1945
+,Edward,Tron,Nieznana,2/1/1945
+35,Nieznany,,,
+36,Marianna,Bernacka,1884 r.,1912 r.
+,Wincenty,Bernacki,1910 r.,1940 r.
+,Franciszka,Bernacka,1879 r.,1969 r.
+37,Nieznany,,,
+38,Nieznany,Nowak,Nieznana,Nieznana
+39,Jan,Cierniak,Nieznana,1913 r.
+,Katarzyna,Cieniakowa,Nieznana,1942 r.
+40,Bogumiła,Raczyńska,1892 r.,1955 r.
+,Irena,Piotrowicz,1912 r.,1991 r.
+41,Nieznany,,,
+42,Jan, Przybylski,1891 r. ,1955 r.
+,Maria,Kusiak,1863 r.,1920 r.
+43,Nieznany,Bujakowa,Nieznana,Nieznana
+44,Antoni,Kurlata,06.06.1840,3/31/1902
+,Marya,Kurlatowa,1841 r.,3/26/1902
+45,Stanisław,Migoń,2/26/1924,7/12/1962
+46,Nieznany,Cierniakowa,Nieznana,Nieznana
+47,Maria,Kaczmarska,Nieznana,4/23/1958
+48,Nieznany,,,
+49,Stanisław,Dudek,Nieznana,1944 r.
+50,Nieznany,,,
+51,Nieznany,Reiss,Nieznana,Nieznana
+52,Jan,Garczyński,Nieznana,Nieznana
+53,Ignacy,Kubala,28.07.1875,7/20/1954
+,Leon,Szombara,1/10/1928,11/4/1969
+,Szymon,Krzyszkowski,2/18/1915,1/3/1969
+,Jadwiga,Szombara,3/18/1923,2/28/2011
+,Ludwika,Kubalowa,15.08.1883,10/30/1943
+,Stanisław,Mularz,2/27/1904,6/9/1963
+,Stefania,Mularz,5/28/1912,11/5/1993
+,Irena,Kubala,2/6/1915,1/5/1998
+54,Leon,Gdowski,Nieznana,1915 r.
+55,Stanisława,Jaworska,1904 r.,1966 r.
+56,Maria,Barnacka,Nieznana,7/11/1920
+,Teresa,Flak,12.08.1866,5/10/1944
+57,Nieznany,Syweńki,Nieznana,Nieznana
+58,Anna,Jaworska,Nieznana,21.11.1897
+,Albina, Wawrykiewiczowa,03.02.1873,9/8/1944
+59,Nieznany,,,
+60,Józef,Guzy,22.01.1887,2/8/1957
+61,Nieznany,,,
+62,Jan,Bernacki,Nieznana,2/2/1903
+63,Józef,Legutko,3/17/1902,3/15/1966
+64,Wincenty,Legutko,Nieznana,Nieznana
+,Teofila,Legutko,Nieznana,Nieznana
+,Jadwiga,Ogiela,Nieznana,Nieznana
+,Karol,Ogiela,Nieznana,Nieznana
+,Maria,Ogiela,Nieznana,Nieznana
+65,Maciej,Stec,1824 r.,1885r.
+66,Franciszek,Sowiński,Nieznana,1920 r.
+,Karolina,Sowińska,Nieznana,1948 r.
+,Józef,Cierniak,Nieznana,1932 r.
+,Anna,Cierniak,Nieznana,1952 r.
+67,Stanisław,Cierniak,28.02.1892,11/9/1957
+68,Weronika,Kozuch,1887 r.,1920 r.
+,Piotr,Kozuch,1884 r.,1948 r.
+,Marianna,Kleśny,1883 r.,1955 r.
+69,Michał,Mydło,1816 r.,1883 r.
+70,Weronika,Sumarowa,Nieznana,Nieznana
+71,Nieznany,Górski,Nieznana,Nieznana
+72,Jan,Fijor,02.05.1863,7/19/1925
+,Magdalena,Fijor,24.05.1868,3/21/1954
+,Katarzyna,Hetwik-Chudy,Nieznana,5/20/1971
+,Marian,Chudy,Nieznana,10/3/1964
+,Władysław,Hetwik,Nieznana,12/23/1971
+,Teofila,Zającowa-Hetwikowa,Nieznana,5/5/1910
+73,Nieznany,,,
+74,Józefa,Jaworska,13.03.1873,6/24/1953
+75,Jan,Kubala,11.12.1873,12/20/1908
+,Bronisława,Kubala,07.12.1878,6/19/1959
+76,Jan,Korzeniowski,22.11.1876,6/2/1940
+,Maria,Korzeniowska,17.03.1878,9/11/1975
+,Zofia,Korzeniowska,Nieznana,3/23/1962
+,Jan,Korzeniowski,4/8/1908,11/2/1988
+,Helena,Korzeniowska,2/12/1914,5/8/2001
+77,Franciszek,Sediwy,01.02.1879,10/18/1932
+,Julia,Sediwy,23.04.1888,10/14/1982
+78,Kazimierz,Urbańczyk,15.02.1899,4/13/1958
+,Wanda,Urbańczyk,3/15/1910,3/4/1992
+79,Apolonia,Aurita-Piątkowska,Nieznana,Nieznana
+,Maria,Sojowa,Nieznana,Nieznana
+,Franciszek,Soja,Nieznana,Nieznana
+80,Małgorzata,Bachówna,10/18/1948,3/6/1949
+81,Władysław,Stec,1886 r.,1918 r.
+,Karol,Stec,1888 r.,1967 r.
+,Maria,Stec,1890 r.,1930 r.
+82,Jan,Surowiecki,1824 r.,8/6/1921
+83,Aleksander,Zachara,11/21/1926,4/12/1960
+84,Stanisław,Rybicki,Nieznana,1898 r.
+,Teofila,Rybicka,Nieznana,1902 r.
+,Stanisława,Petersowa,1894 r.,1939 r.
+,Stanisław,Stefański,1889 r.,1963 r.
+,Helena,Stefańska,1892 r.,1963 r.
+,Jan,Biernat,1901 r.,1962 r.
+,Karol,Grochola,1918 r.,1982 r.
+,Halina,Biernat,1917 r.,2021 r.
+,Maria,Grochola,1922 r.,2017 r.
+85,Józef,Płaneta,7/16/1903,2/7/1969
+,Maria,Płaneta,9/6/1903,11/26/1969
+86,Aniela,Mrówka,11/9/1907,6/26/1966
+87,Apolonia,Sojowa,05.02.1894,10/12/1970
+,Zdzisław,Soja,09.04.1884,10/17/1951
+,Julia,Grodzicka,04.02.1881,3/26/1972
+88,Władysław,Głogowski,10.06.1894,9/6/1951
+,Stefania,Głogowska,1897 r.,1972 r.
+,Stanisław ,Róg,1884 r.,1960 r.
+89,Aleksander,Stelmach,1884 r.,1953 r.
+,Janina,Stelmach,1919 r.,2007 r.
+90,Maria,Pietrusińska,23.09.1877,11/28/1950
+,Stanisław,Pietrusiński,08.03.1873,10/29/1938
+,Emilia,Legutko,01.06.1894,6/30/1976
+,Maria,Kosińska,5/19/1904,11/9/1984
+,Stanisław,Kosiński,1930 r.,1949 r.
+,Kazimierz,Kosiński,1891 r.,1948 r.
+,Franciszek,Ogiela,8/3/1931,11/2/1989
+,Kunegunda,Jaworska,Nieznana,Nieznana
+91,Nieznany,,,
+92,Magdalena,Stecowa,Nieznana,Nieznana
+93,Edmund,Króllikowski,1905 r.,1942 r.
+,Feliks,Dankowski,1868 r.,1944 r.
+94,Nieznany,,,
+95,Maria,Nieznane,Nieznana,Nieznana
+96,Anna,Adamczyk,12/16/1907,2/1/1953
+97,Nieznany,,,
+98,Helena,Knihicka,8/18/1903,8/25/1970
+,Adam,Golonka,12/16/1928,7/26/2004
+,Krystyna,Golonka,8/8/1934,6/22/2019
+99,Michał,Malarski,1873 r.,1950 r.
+100,Józef,Krzęciasz,Nieznana,Nieznana
+,Zofia,Krzęciasz,Nieznana,Nieznana
+101,Jakub,Synowiec,Nieznana,12/20/1944
+,Stanisław,Sumara,Nieznana,Nieznana
+,Józef,Sumara,Nieznana,Nieznana
+,Władysław,Węglarz,08.05.1897,2/3/1967
+102,Kazimierz,Ludwik,1884 r.,1950 r.
+103,Nieznany,,,
+104,Nieznany,Pziurgoł,Nieznana,Nieznana
+105,Nieznany,Mleczko,Nieznana,Nieznana
+,Nieznany,Sumara,,
+106,Stefan,Sukiennik,Nieznana,Nieznana
+,Maria,Sukiennik,29.03.1895,9/14/1978
+,Józefa,Balzer-Muszowa,Nieznana,11/26/1964
+,Franciszek,Sukiennik,Nieznana,10/25/1930
+,Maria,Sukiennik,Nieznana,3/6/1943
+107,Maria,Jaworska,Nieznana,1980 r.
+,Antoni,Jaworski,Nieznana,1980 r.
+108,Stanisław,Sowiński,Nieznana,Nieznana
+,Walenty,Sowiński,Nieznana,Nieznana
+,Weronika,Sowińska,Nieznana,Nieznana
+,Maria,Gdowska,05.03.1871,5/22/1903
+109,Nieznany,,,
+110,Franciszek,Fortuna,16.09.1888,26.051974
+,Maria,Fortuna,8/19/1904,12/9/2006
+,Jan,Fortuna,06.12.1889,4/27/1983
+111,Adolf,Zachara,Nieznana,1941 r.
+,Rozalia,Zachara,Nieznana,1951 r.
+,Jan,Zachara,Nieznana,1968 r.
+112,Walenty,Lisieński,Nieznana,1899 r.
+113,Franciszek,Bayer,Nieznana,Nieznana
+114,Jan,Wilczyński,Nieznana,1906 r.
+,Julja,Wilczyńska,Nieznana,6/11/1931
+,Władysław,Juras,10.10.1889,1/12/1972
+,Józefa,Juras,18.03.1896,9/12/1974
+115,Jan,Ostoja-Strzałkowski,1863 r.,1879r.
+,Tekla,Ostoja-Strzałkowska,1830 r.,1884 r.
+116,Maria,Gasińska,07.05.1896,9/10/1971
+,Antoni,Gasiński,31.05.1891,4/15/1965
+,Roman,Gasiński,11/10/1923,1/5/1944
+,Ignacy,Bernacki,05.02.1878,6/5/1911
+,Marian,Gasiński,11/10/1923,3/30/1948
+,Janina,Gasińska,4/23/1919,2/24/1942
+,Jan,Flak,4/19/1900,3/24/1920
+117,Paweł,Vogel,Nieznana,4/3/1904
+,Rozalia,Voglowa,Nieznana,10/11/1910
+118,Paweł,Vogel,Nieznana,Nieznana
+,Anna,Voglowa,Nieznana,Nieznana
+,Anna,Voglówna,Nieznana,1970 r.
+119,Zofia,Bernardzikowska,Nieznana,Nieznana
+,Szymon,Bernardzikowski,Nieznana,Nieznana
+120,Władysław,Urban,9/29/1902,11/6/1966
+,Jan,Adamczyk,1868 r.,1943 r.
+121,Stanisław,Duda,02.09.1889,12/10/1967
+122,Jakub,Kusiak,Nieznana,1928 r.
+123,Andrzej,Cyma,1869 r.,1950 r.
+,Joanna,Cyma,1876 r.,1959 r.
+,Marian,Cyma,1902 r.,1955 r.
+124,Henryk,Szczepka,09.04.1866,10/24/1913
+125,Teresa,Gawenda,9/18/1929,9/22/1968
+126,Helena ,Obecka,Nieznana,9/6/1918
+127,Nieznany,Maderscy,Nieznana,Nieznana
+128,Nieznany,,,
+129,Maria ,Węgrzyn,1898 r.,1965 r.
+,Władysław,Węgrzyn,1894 r.,1969 r.
+,Bogumiła,Węgrzyn,1929 r.,1997 r.
+130,Nieznany,,,
+131,Nieznany,,,
+132,Stanisław,Zarzecki,07.05.1886,12/15/1958
+,Stefania,Zarzecka,10.10.1888,4/5/1966
+133,Nieznany,,,
+134,Anna,Gofroniowa,18.07.1894,1/20/1969
+,Teafila,Datko,19.04.1867,12/9/1906
+135,Nieznany,Michaliszyn,Nieznana,Nieznana
+136,Nieznany,,,
+137,Bolesław,Socha,11/27/1918,10/30/1961
+,Janina ,Socha,5/18/1916,2/23/1969
+,Maria,Socha,14.08.1888,2/26/1971
+,Jan,Socha,1851 r.,1909 r.
+,Kunegunda,Socha,1850 r.,1936 r.
+138,Tekla,Drużkowska,Nieznana,Nieznana
+139,Maksymilian,Vogelsang,21.12.1880,1/19/1945
+,Katarzyna,Vogelsangowa,08.01.1887,12/8/1971
+140,Władysław,Habryło,07.10.1887,12/7/1947
+,Aniela,Habryło,30.11.1888,3/19/1966
+141,Andrzej,Kotra,Nieznana,6/17/1946
+,Maria,Kotrowa,Nieznana,8/2/1945
+142,Józef,Szydłowski,1867 r.,1930 r.
+143,Stanisława,Wolny,10/20/1907,7/23/1948
+,Józef,Wolny,29.02.1901,3/11/1959
+144,Walenty,Gałek,1827 r.,1866 r.
+,Anna,Gałkowa,1836 r.,4/20/1923
+145,Nieznany,,,
+146,Irena,Sukiennik,Nieznana,11/16/2018
+,Irma,Hołuj-Sukiennikowa,Nieznana,8/15/1974
+,Julian,Sukiennik,Nieznana,11/8/1980
+147,Nieznany,Jasiewicz,Nieznana,Nieznana
+148,Nieznany,,,
+149,Józef,Puskarczyk,21.02.1894,2/22/1960
+150,Anna,Grzyb,7/24/1908,6/11/1981
+,Helena,Trawińska,11.01.1877,1/31/1950
+151,Jan ,Dyszkiewisz,Nieznana,1880 r.
+152,Karolina,Osuchowa,Nieznana,6/3/1970
+153,Adolf,Świderski,Nieznana,Nieznana
+,Julian,Świderski,Nieznana,Nieznana
+154,Władysław,Kuhnert,1908 r.,1999 r.
+,Teresa,Kuhnertowa-Krzyszowska,25.04.1874,5/21/1959
+,Irena ,Kuhnert,1904 r.,1990 r.
+155,Edward,Byszkiewicz,9/5/1908,10/8/1962
+156,Helena,Juchno,04.11.1879,12/25/1965
+,Wojciech,Juchno,04.04.1876,12/30/1939
+,Maria ,Juchno,1913 r.,2007 r.
+157,Władysław,Przybylski,10.09.1876,2/16/1953
+,Julia,Przybylska,03.11.1885,9/20/1966
+,Tadeusz,Przybylski,Nieznana,7/21/1946
+158,Alojzy,Sumara,21.07.1881,9/8/1960
+159,Adam,Surowiecki,27.11.1883,7/21/1943
+,Maria,Surowiecki,27.12.1890,11/15/1951
+160,Nieznany,,,
+161,Władysław,Nowak,1886 r.,1947 r.
+162,Agnieszka,Duda,04.04.1894,4/4/1968
+163,Anna,Rusin,30.06.1874,5/9/1957
+164,Franciszka,Markiewicz,Nieznana,Nieznana
+,Józefa,Markiewicz,Nieznana,Nieznana
+,Teodor,Markiewicz,Nieznana,Nieznana
+,Marian,Markiewicz,Nieznana,Nieznana
+,Leokadia,Kasprzak,Nieznana,Nieznana
+165,Nieznany,Rabiasz,Nieznana,Nieznana
+166,Władysław,Rabiasz,Nieznana,Nieznana
+167,Nieznany,Wasik,Nieznana,Nieznana
+168,Władysław,Gałek,Nieznana,1902 r.
+169,Helena,Szczepańska,18.08.1859,12/27/1948
+,Tadeusz,Szczepański,08.07.1887,12/18/1961
+,Maria,Szczepańska,Nieznana,5/9/1966
+170,Maria,Nieznane,Nieznana,7/28/1951
+171,Józef,Gawenda,Nieznana,Nieznana
+,Władysław,Gawenda,Nieznana,Nieznana
+,Maria,Gawenda,Nieznana,Nieznana
+172,Stanisław,Hamielec,13.02.1888,2/26/1932
+,Solomea,Hamielec,24.09.1896,1/16/1963
+,Juliusz,Hamielec,2/18/1926,Nieznana
+,Agnieszka,Hamielec,1903 r.,1950 r.
+,Andrzej,Hamielec,Nieznana,Nieznana
+,Karol,Janik,Nieznana,Nieznana
